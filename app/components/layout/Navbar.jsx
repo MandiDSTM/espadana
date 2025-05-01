@@ -103,11 +103,10 @@ export default function Navbar() {
                   <a
                     href={item.href}
                     className={`${
-                      !scrolled
-                        ? "text-gray-200"
-                        : "text-gray-700 font-semibold hover:text-gray-900 hover:font-bold"
-                    } hover:text-white`}
-                    scroll={false} // مهم: این اسکرول خودکار next.js را غیرفعال می‌کند
+                      scrolled
+                        ? "text-gray-800"
+                        : "text-gray-200 hover:text-white"
+                    }  hover:text-gray-900 hover:font-bold`}
                   >
                     {item.name}
                   </a>

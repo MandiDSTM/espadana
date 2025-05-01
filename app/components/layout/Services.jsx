@@ -24,19 +24,19 @@ const AccordionItem = ({ title, content, isOpen, toggleAccordion, index }) => {
     <div className="border-b border-gray-200 last:border-b-0">
       <button
         className={`w-full text-right py-5 px-6 flex justify-between items-center transition-all duration-300 group hover:bg-gray-50
-                  ${isOpen ? "text-blue-600" : "text-gray-700"}`}
+                  ${isOpen ? "text-blue-600 md:text-2xl " : "text-gray-600-400 "} rounded-xl m-1`}
         onClick={() => toggleAccordion(index)}
         aria-expanded={isOpen}
         aria-controls={`accordion-content-${index}`}
       >
-        <span className="text-lg font-medium group-hover:text-blue-500 transition-colors duration-300">
+        <span className="text-sm md:text-lg font-medium group-hover:text-blue-500 transition-colors duration-300 max-w-[90%]">
           {title}
         </span>
         <span
-          className={`flex items-center justify-center w-8 h-8 rounded-full transition-all duration-300
+          className={`flex items-center justify-center h-6 w-6 md:w-8 md:h-8  rounded-full transition-all duration-300
                     ${
                       isOpen
-                        ? "bg-blue-700 text-white"
+                        ? "bg-blue-600 text-white"
                         : "bg-gray-200 text-gray-700 group-hover:bg-blue-100"
                     }`}
         >
@@ -50,13 +50,13 @@ const AccordionItem = ({ title, content, isOpen, toggleAccordion, index }) => {
       <div
         id={`accordion-content-${index}`}
         style={{ maxHeight: isOpen ? `${height}px` : "0px" }}
-        className={`transition-all duration-500 ease-in-out overflow-hidden ${
+        className={`transition-all duration-500 ease-in-out overflow-hidden mb-1 ${
           isOpen ? "opacity-100" : "opacity-0"
         }`}
       >
         <div
           ref={contentRef}
-          className="p-6 md:p-8 text-gray-600 bg-gray-50 rounded-lg  mx-4"
+          className="p-2 md:p-8  text-gray-600 bg-gray-50 rounded-lg  mx-4 text-sm md:text-base"
         >
           {content}
         </div>
@@ -78,9 +78,9 @@ const FAQVisualElement = () => (
       />
 
       {/* المان بصری سوالات متداول */}
-      <div className="absolute bg-gradient-to-r from-blue-700 to-blue-950 inset-0 flex items-center justify-center p-8">
-        <div className="text-center text-white">
-          <div className="mb-6">
+      <div className="absolute bg-gradient-to-r from-blue-600 to-blue-900 inset-0 flex items-center justify-center p-8">
+        <div className="text-center text-white ">
+          <div className="mb-3 md:mb-6">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -94,31 +94,31 @@ const FAQVisualElement = () => (
               />
             </svg>
           </div>
-          <h3 className="text-2xl font-bold mb-4">پرسش‌های متداول شما</h3>
-          <p className="text-lg opacity-90 mb-6">
+          <h3 className="text-lg md:text-2xl font-bold mb-4">پرسش‌های متداول شما</h3>
+          <p className="text-sm md:text-lg opacity-90 mb-6">
             اینجا مکانی برای یافتن پاسخ‌های دقیق به سوالات رایج شماست. همواره در
             کنار شما هستیم.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-4 mt-6">
-            <div className="bg-white bg-opacity-20 p-4 rounded-lg text-center">
-              <span className="block text-2xl font-bold">۲۴/۷</span>
+          <div className="flex justify-center gap-4 mt-6">
+            <div className="bg-white  bg-opacity-20 p-2 md:p-4 rounded-lg text-center  flex flex-col justify-center">
+              <span className="block text-sm md:text-2xl font-bold">۲۴/۷</span>
               <span className="text-sm">پشتیبانی آنلاین</span>
             </div>
             <div className="bg-white bg-opacity-20 p-4 rounded-lg text-center">
-              <span className="block text-2xl font-bold">+۵۰۰</span>
+              <span className="block text-sm md:text-2xl font-bold">+۵۰۰</span>
               <span className="text-sm">سوالات پاسخ داده شده</span>
             </div>
             <div className="bg-white bg-opacity-20 p-4 rounded-lg text-center">
-              <span className="block text-2xl font-bold">۹۰٪</span>
+              <span className="block text-sm md:text-2xl font-bold">۹۰٪</span>
               <span className="text-sm">نرخ رضایت</span>
             </div>
           </div>
 
-          <div className="mt-8">
+          <div className="mt-4 md:mt-8">
             <a
               href="#contact"
-              className="inline-block bg-white text-indigo-700 font-medium py-3 px-6 rounded-md hover:bg-opacity-90 transition-colors duration-200"
+              className="inline-block bg-white text-indigo-700 font-medium text-sm md:text-base py-3 px-6 rounded-md hover:bg-opacity-90 transition-colors duration-200"
             >
               سوال خود را بپرسید
             </a>
@@ -177,7 +177,7 @@ const ServiceCard = ({ service, index, activeTab, changeTab }) => (
       </div>
 
       {/* لایه توضیحات در حالت hover */}
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-900/95 to-black/95 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center p-8 z-20 backdrop-blur-sm">
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-900/95 to-black/60 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center p-8 z-20 backdrop-blur-sm">
         <div className="flex items-center justify-center w-16 h-16 rounded-full bg-white/10 mb-4 mx-auto transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
           {service.icon}
         </div>
@@ -323,10 +323,10 @@ export default function Services() {
 
   return (
     <section
-      className="py-16 md:py-24 bg-gradient-to-b from-slate-50 to-slate-100 "
+      className="pb-16 pt-44  bg-gradient-to-b from-slate-50 to-slate-100 "
       id="services"
     >
-      <div className="mx-auto px-4 container">
+      <div className="mx-auto max-w-7xl px-4 md:px-0">
         {/* بخش هدر */}
         <div className="text-center mb-16" data-aos="fade-up">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 relative inline-block">
@@ -340,7 +340,7 @@ export default function Services() {
         </div>
 
         {/* بخش کارت‌های خدمات */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-24">
+        <div className="container grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-24">
           {services.map((service, index) => (
             <ServiceCard
               key={index}
@@ -353,7 +353,7 @@ export default function Services() {
         </div>
 
         {/* بخش سوالات متداول */}
-        <div className="max-w-7xl mx-auto pt-24">
+        <div className="max-w-7xl mx-auto  pt-24">
           <h3 className="text-center text-2xl md:text-4xl font-bold mb-12">
             سوالات متداول
             <span className="block w-24 h-1 bg-blue-600 mx-auto mb-6 rounded mt-6"></span>
@@ -374,7 +374,7 @@ export default function Services() {
                     className={`flex-1 py-4 px-3 md:px-5 font-medium text-center transition-all duration-300 relative
                          ${
                            activeTab === index
-                             ? "bg-blue-800 text-white shadow-lg hover:bg-blue-900"
+                             ? "bg-blue-600 text-white shadow-lg hover:bg-blue-800"
                              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                          }`}
                     onClick={() => changeTab(index)}
@@ -411,7 +411,7 @@ export default function Services() {
                 </div>
 
                 <div className="mt-8 text-center">
-                  <button className="px-8 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-600 transition-all duration-300 text-white font-medium shadow-lg hover:shadow-blue-500/30 transform hover:scale-105">
+                  <button className="px-8 py-3 rounded-lg  bg-blue-600  hover:from-blue-700 hover:to-blue-600 transition-all duration-300 text-white font-medium shadow-lg hover:shadow-blue-500/30 transform hover:scale-105">
                     دریافت مشاوره رایگان
                   </button>
                 </div>

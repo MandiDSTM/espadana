@@ -7,35 +7,126 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const [videoStatus, setVideoStatus] = useState('loading'); // loading, playing, error
+  const [videoSource, setVideoSource] = useState('/videos/spadana.mp4');
+  const [useFallbackImage, setUseFallbackImage] = useState(false);
+  
   const videoRef = useRef(null);
   const loadingTimeoutRef = useRef(null);
+  const errorTimeoutRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
+    
     window.addEventListener("scroll", handleScroll);
 
-    // اگر ویدیو قبلاً کش شده باشد، این رویداد هرگز فراخوانی نمی‌شود
-    // پس برای اطمینان بیشتر چک می‌کنیم
+    // تایمر اصلی برای نمایش محتوا حتی اگر ویدیو لود نشود
     loadingTimeoutRef.current = setTimeout(() => {
       if (!videoLoaded) {
         console.log("Loading timeout reached, showing content anyway");
         setVideoLoaded(true);
-
-        // بعد از بارگذاری ویدیو، محتوا را با تاخیر نمایش می‌دهیم
+        
         setTimeout(() => {
           setIsVisible(true);
         }, 300);
       }
-    }, 1000);
+    }, 3000); // افزایش زمان به 3 ثانیه برای اطمینان بیشتر
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    // تست دسترسی به Cloudflare
+    const testConnection = async () => {
+      try {
+        const startTime = performance.now();
+        const testResponse = await fetch('/favicon.ico?' + new Date().getTime(), { 
+          cache: 'no-store',
+          timeout: 4000
+        });
+        const endTime = performance.now();
+        
+        const responseTime = endTime - startTime;
+        console.log(`CDN test response time: ${responseTime}ms`);
+        
+        // اگر زمان پاسخ خیلی طولانی باشد، احتمالاً مشکل در Cloudflare است
+        if (responseTime > 3000 || !testResponse.ok) {
+          console.log("CDN connection might be problematic, preparing backup solution");
+          // آماده‌سازی برای استفاده از fallback در صورت نیاز
+        }
+      } catch (error) {
+        console.error("CDN connection test failed:", error);
+        // احتمال زیاد مشکل Cloudflare است
+      }
+    };
+
+    testConnection();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(loadingTimeoutRef.current);
+      clearTimeout(errorTimeoutRef.current);
+    };
   }, []);
+
+  // مدیریت تغییر منبع ویدیو و مدیریت خطاها
+  useEffect(() => {
+    const handleLoadedData = () => {
+      console.log("Video loaded successfully from source:", videoSource);
+      setVideoStatus('playing');
+      setVideoLoaded(true);
+      
+      setTimeout(() => {
+        setIsVisible(true);
+      }, 300);
+    };
+    
+    const handleError = (e) => {
+      console.error("Video error:", e);
+      setVideoStatus('error');
+      
+      // اگر اولین منبع با خطا مواجه شد، منبع دوم را امتحان می‌کنیم
+      if (videoSource === '/videos/spadana.mp4' && !useFallbackImage) {
+        console.log("Trying WebM format...");
+        setVideoSource('/videos/header-background.webm');
+      } 
+      // اگر دومین منبع هم با خطا مواجه شد، از تصویر استفاده می‌کنیم
+      else if (!useFallbackImage) {
+        console.log("Video loading failed. Using fallback image.");
+        setUseFallbackImage(true);
+        setVideoLoaded(true);
+        
+        setTimeout(() => {
+          setIsVisible(true);
+        }, 300);
+      }
+    };
+    
+    // تنظیم تایمر برای تشخیص بارگذاری کند
+    errorTimeoutRef.current = setTimeout(() => {
+      if (videoStatus === 'loading' && !videoLoaded) {
+        console.log("Video loading timeout - switching to alternative source");
+        handleError(new Error("Loading timeout"));
+      }
+    }, 5000); // ۵ ثانیه تایم‌اوت
+    
+    const video = videoRef.current;
+    if (video) {
+      video.addEventListener('loadeddata', handleLoadedData);
+      video.addEventListener('error', handleError);
+    }
+    
+    return () => {
+      if (video) {
+        video.removeEventListener('loadeddata', handleLoadedData);
+        video.removeEventListener('error', handleError);
+      }
+      clearTimeout(errorTimeoutRef.current);
+    };
+  }, [videoSource, videoStatus, useFallbackImage]);
 
   const handleVideoCanPlay = () => {
     // ویدیو آماده پخش است
     setVideoLoaded(true);
+    setVideoStatus('playing');
     // بعد از بارگذاری ویدیو، محتوا را با تاخیر نمایش می‌دهیم
     setTimeout(() => {
       setIsVisible(true);
@@ -43,7 +134,6 @@ export default function Header() {
   };
 
   const typingItems = {
-    title: ["آینده ای سبز با اسپادانا", 1000],
     subtitle: ["راهکارهای نوین انرژی‌های سبز", 1000],
     description: ["ترسیم هوشمندانه از آینده انرژی خورشیدی", 1000],
   };
@@ -62,21 +152,33 @@ export default function Header() {
     <header className="relative w-full h-screen overflow-hidden">
       {/* تصویر پس‌زمینه */}
       <div className="absolute inset-0 w-full h-full">
-        <video
+        {useFallbackImage ? (
+          // استفاده از تصویر جایگزین در صورت خطای ویدیو
+          <div 
+            className="absolute top-0 left-0 w-full h-full object-cover"
+            style={{backgroundImage: "url('/poster-image.jpg')", backgroundSize: "cover", backgroundPosition: "center"}}
+            aria-label="تصویر پس‌زمینه"
+          />
+        ) : (
+          <video
           ref={videoRef}
           className="absolute top-0 left-0 w-full h-full object-cover"
           autoPlay
           muted
           loop
           playsInline
-          poster="/poster-image.jpg" // تصویر پیش‌نمایش قبل از بارگذاری ویدیو
+          poster="/poster-image.jpg"
           onCanPlay={handleVideoCanPlay}
+          preload="metadata"
+          loading="lazy"
+          disablePictureInPicture={true}
+          disableRemotePlayback={true}
         >
+          <source src="/videos/spadana.webm" type="video/webm" />
           <source src="/videos/spadana.mp4" type="video/mp4" />
-          <source src="/videos/header-background.webm" type="video/webm" />
-          {/* پیام خطا اگر مرورگر از ویدیو پشتیبانی نکند */}
           Your browser does not support the video tag.
         </video>
+        )}
       </div>
 
       {/* لایه اورلی آبی با شفافیت کمتر برای کنتراست بیشتر */}
@@ -135,14 +237,7 @@ export default function Header() {
               >
                 راهکارهای نسل جدید برای
                 <span className="block mt-3 bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-cyan-300 py-1">
-                  {isVisible && (
-                    <TypeAnimation
-                      sequence={typingItems.title}
-                      wrapper="span"
-                      speed={200}
-                      repeat={0}
-                    />
-                  )}
+                  آینده ای سبز بااسپادانا
                 </span>
               </h1>
 
@@ -177,28 +272,27 @@ export default function Header() {
               }`}
               >
                 <a href="/#contact">
-                <button
-                  className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 
+                  <button
+                    className="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 
                 text-white px-6 md:px-8 py-3.5 rounded-lg font-medium 
                 transition-all duration-300 transform hover:scale-105
                 shadow-lg hover:shadow-blue-500/40 
                 flex items-center gap-3 group"
-                
-                >
-                  <span>مشاوره رایگان</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
                   >
-                    <path
-                      fillRule="evenodd"
-                      d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </button>
+                    <span>مشاوره رایگان</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </button>
                 </a>
 
                 <button
@@ -254,10 +348,10 @@ export default function Header() {
                 <div className="text-center transform hover:scale-105 transition-transform duration-300 group">
                   <div className="text-2xl md:text-3xl font-bold text-blue-300 group-hover:text-blue-200 transition-colors duration-300">
                     +30
-                    <span >MW</span>
+                    <span>MW</span>
                   </div>
                   <div className="text-sm md:text-base text-gray-300 mt-2">
-                   پروژه های در حال اجرا 
+                    پروژه های در حال اجرا
                   </div>
                 </div>
               </div>
@@ -269,6 +363,13 @@ export default function Header() {
           </div>
         </div>
       </div>
+      
+      {/* نمایش وضعیت ویدیو برای تست (می‌توانید در نسخه نهایی حذف کنید) */}
+      {process.env.NODE_ENV === 'development' && (
+        <div className="fixed bottom-4 left-4 bg-black/70 text-white p-2 rounded-lg z-50 text-xs">
+          Status: {videoStatus} | Source: {videoSource.includes('webm') ? 'WebM' : 'MP4'} | Fallback: {useFallbackImage ? 'Yes' : 'No'}
+        </div>
+      )}
     </header>
   );
 }

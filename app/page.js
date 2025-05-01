@@ -12,7 +12,7 @@ export default function Home() {
       <Navbar  />
       <Header  />
       <Servises  />
-      <div className="w-full  mx-auto py-24 bg-gray-100">
+      <div className="w-full  mx-auto py-24 bg-gray-100 pb-40">
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h3 className="text-3xl md:text-5xl font-bold text-center mb-4">
