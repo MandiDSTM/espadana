@@ -24,7 +24,7 @@ export default function Navbar() {
   const menuItems = [
     { name: "خانه", href: "/" },
     { name: "خدمات", href: "/#services" },
-    { name: "درباره ما", href: "/#about" },
+    { name: "درباره ما", href: "/about" },
     { name: "تماس با ما", href: "/#contact" },
   ];
 
