@@ -24,15 +24,15 @@ export default function Navbar() {
   const menuItems = [
     { name: "خانه", href: "/" },
     { name: "خدمات", href: "/#services" },
+    { name: "محصولات", href: "/#product" },
     { name: "درباره ما", href: "/about" },
     { name: "تماس با ما", href: "/#contact" },
   ];
 
   return (
     <nav
-      className={` fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/50 backdrop-blur-md" : " mx-auto"
-      }`}
+      className={` fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/50 backdrop-blur-md" : " mx-auto"
+        }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
@@ -56,9 +56,8 @@ export default function Navbar() {
             )}
             <Link
               href="/"
-              className={`text-xl font-bold  ${
-                !scrolled ? "text-gray-200" : "text-gray-700 font-semibold"
-              } hover:text-white`}
+              className={`text-xl font-bold  ${!scrolled ? "text-gray-200" : "text-gray-700 font-semibold"
+                } hover:text-white`}
             >
               اسپادانا
             </Link>
@@ -100,16 +99,28 @@ export default function Navbar() {
             <ul className="flex space-x-reverse space-x-8">
               {menuItems.map((item) => (
                 <li key={item.name} className="gradient-hover-item relative">
-                  <a
-                    href={item.href}
-                    className={`${
-                      scrolled
-                        ? "text-gray-800"
-                        : "text-gray-200 hover:text-white"
-                    }  hover:text-gray-900 hover:font-bold`}
-                  >
-                    {item.name}
-                  </a>
+                  {item.name === "محصولات" ? (
+                    <Link
+                      href="/product"
+                      className={`${scrolled
+                          ? "text-gray-800"
+                          : "text-gray-200 hover:text-white"
+                        } hover:text-gray-900 hover:font-bold`}
+                    >
+                      {item.name}
+                    </Link>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className={`${scrolled
+                          ? "text-gray-800"
+                          : "text-gray-200 hover:text-white"
+                        } hover:text-gray-900 hover:font-bold`}
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+
                 </li>
               ))}
             </ul>
@@ -121,11 +132,10 @@ export default function Navbar() {
 
       {/* منوی موبایل */}
       <div
-        className={`lg:hidden fixed w-full transition-all transform duration-300 ease-out origin-top ${
-          isOpen
-            ? "opacity-100 scale-y-100 translate-y-0"
-            : "opacity-0 scale-y-95 -translate-y-4 pointer-events-none"
-        } bg-gray-900/95 backdrop-blur-sm`}
+        className={`lg:hidden fixed w-full transition-all transform duration-300 ease-out origin-top ${isOpen
+          ? "opacity-100 scale-y-100 translate-y-0"
+          : "opacity-0 scale-y-95 -translate-y-4 pointer-events-none"
+          } bg-gray-900/95 backdrop-blur-sm`}
       >
         <div className="container mx-auto px-4 py-3">
           <ul className="space-y-2 py-2">

@@ -36,7 +36,7 @@ export default function Header() {
         console.log("Loading timeout reached, showing content anyway");
         handleVideoReady();
       }
-    }, 3000);
+    }, 1000);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -73,7 +73,7 @@ export default function Header() {
       if (videoStatus === 'loading' && !videoLoaded) {
         onError(new Error('Loading timeout'));
       }
-    }, 5000);
+    }, 1000);
 
     videoEl.addEventListener('loadeddata', onLoadedData);
     videoEl.addEventListener('error', onError);
