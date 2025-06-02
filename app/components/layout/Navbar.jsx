@@ -3,28 +3,32 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function Navbar() {
+export default function Navbar({ scrollValue }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // تغییر استایل navbar هنگام اسکرول
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
+    useEffect(() => {
+      if(scrollValue) {
         setScrolled(true);
-      } else {
-        setScrolled(false);
+        return;
       }
-    };
+      const handleScroll = () => {
+        if (window.scrollY > 10) {
+          setScrolled(true);
+        } else {
+          setScrolled(false);
+        }
+      };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+  
 
   const menuItems = [
     { name: "خانه", href: "/" },
     { name: "خدمات", href: "/#services" },
-    { name: "محصولات", href: "/#product" },
+    { name: "محصولات", href: "/#products" },
     { name: "درباره ما", href: "/about" },
     { name: "تماس با ما", href: "/#contact" },
   ];
@@ -101,10 +105,10 @@ export default function Navbar() {
                 <li key={item.name} className="gradient-hover-item relative">
                   {item.name === "محصولات" ? (
                     <Link
-                      href="/product"
+                      href="/products"
                       className={`${scrolled
-                          ? "text-gray-800"
-                          : "text-gray-200 hover:text-white"
+                        ? "text-gray-800"
+                        : "text-gray-200 hover:text-white"
                         } hover:text-gray-900 hover:font-bold`}
                     >
                       {item.name}
@@ -113,8 +117,8 @@ export default function Navbar() {
                     <Link
                       href={item.href}
                       className={`${scrolled
-                          ? "text-gray-800"
-                          : "text-gray-200 hover:text-white"
+                        ? "text-gray-800"
+                        : "text-gray-200 hover:text-white"
                         } hover:text-gray-900 hover:font-bold`}
                     >
                       {item.name}

@@ -2,108 +2,165 @@
 import { useState, useEffect } from 'react';
 import { ShoppingCart, Heart, Star, Search, Filter, Grid, List } from 'lucide-react';
 import Navbar from '../components/layout/Navbar';
+import { sampleProducts } from '@/data/products/products'
+import Link from 'next/link';
+import DropDown from '../components/ui/dropdown/DropDown'
+
+// کامپوننت Skeleton
+const Skeleton = ({ width = '100%', height = '20px', className = '', rounded = false }) => {
+  return (
+    <div
+      className={`
+        animate-pulse 
+        bg-gray-200 
+        ${rounded ? 'rounded-full' : 'rounded'} 
+        ${className}
+      `}
+      style={{ width, height }}
+    />
+  );
+};
+
+// اسکلتون کارت محصول
+const ProductCardSkeleton = () => (
+  <div className="bg-white rounded-lg shadow-md overflow-hidden">
+    <Skeleton height="192px" className="w-full" />
+    <div className="p-4">
+      <Skeleton height="24px" width="80%" className="mb-2" />
+      <Skeleton height="16px" width="100%" className="mb-1" />
+      <Skeleton height="16px" width="60%" className="mb-3" />
+
+      {/* ستاره‌ها */}
+      <div className="flex items-center mb-3">
+        <Skeleton height="16px" width="100px" />
+      </div>
+
+      {/* قیمت */}
+      <div className="flex items-center justify-between mb-3">
+        <Skeleton height="20px" width="80px" />
+        <Skeleton height="20px" width="50px" />
+      </div>
+
+      {/* دکمه */}
+      <Skeleton height="40px" width="100%" />
+    </div>
+  </div>
+);
+
+// اسکلتون آیتم لیست
+const ProductListItemSkeleton = () => (
+  <div className="bg-white rounded-lg shadow-md overflow-hidden flex">
+    <Skeleton height="128px" width="128px" />
+    <div className="flex-1 p-4 flex flex-col justify-between">
+      <div>
+        <div className="flex items-start justify-between mb-2">
+          <Skeleton height="24px" width="70%" />
+          <Skeleton height="16px" width="16px" rounded />
+        </div>
+        <Skeleton height="16px" width="100%" className="mb-1" />
+        <Skeleton height="16px" width="80%" className="mb-2" />
+        <Skeleton height="16px" width="100px" />
+      </div>
+
+      <div className="flex items-center justify-between mt-3">
+        <Skeleton height="20px" width="80px" />
+        <div className="flex items-center gap-3">
+          <Skeleton height="20px" width="50px" />
+          <Skeleton height="40px" width="120px" />
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+// اسکلتون صفحه اصلی
+const ProductsPageSkeleton = () => (
+  <div className="min-h-screen bg-gray-50" dir="rtl">
+    <Navbar />
+    {/* Header */}
+    <div className=" shadow-sm border-b bg-blue-800">
+      <div className="container mx-auto px-4 py-6 bg-blue-800">
+        <h1 className="text-3xl font-bold text-gray-100 mb-2 pt-16 text-center ">فروشگاه اسپادانا</h1>
+        <p className="text-gray-200 text-center pt-2">انرژی پایدار، آینده روشن با اسپادانا</p>
+      </div>
+    </div>
+
+
+    <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="flex flex-col lg:flex-row gap-8">
+        {/* Sidebar Skeleton */}
+        <div className="lg:w-64 flex-shrink-0">
+          <div className="bg-white rounded-lg shadow-md p-6 sticky top-4">
+            {/* Search Skeleton */}
+            <div className="mb-6">
+              <Skeleton height="40px" width="100%" />
+            </div>
+
+            {/* Categories Skeleton */}
+            <div className="mb-6">
+              <Skeleton height="20px" width="80px" className="mb-3" />
+              <div className="space-y-2">
+                {[1, 2, 3, 4, 5, 6].map((i) => (
+                  <Skeleton key={i} height="36px" width="100%" />
+                ))}
+              </div>
+            </div>
+
+            {/* Price Range Skeleton */}
+            <div className="mb-6">
+              <Skeleton height="20px" width="100px" className="mb-3" />
+              <Skeleton height="20px" width="100%" className="mb-2" />
+              <div className="flex justify-between">
+                <Skeleton height="16px" width="30px" />
+                <Skeleton height="16px" width="80px" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Main Content Skeleton */}
+        <div className="flex-1">
+          {/* Toolbar Skeleton */}
+          <div className="bg-white rounded-lg shadow-md p-4 mb-6">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <Skeleton height="20px" width="150px" />
+              <div className="flex items-center gap-4">
+                <Skeleton height="40px" width="120px" />
+                <Skeleton height="40px" width="80px" />
+              </div>
+            </div>
+          </div>
+
+          {/* Products Grid Skeleton */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Array.from({ length: 6 }).map((_, index) => (
+              <ProductCardSkeleton key={index} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
 
 export default function ProductsPage() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('همه');
-  const [priceRange, setPriceRange] = useState([0, 1000000]);
+  const [priceRange, setPriceRange] = useState([0, 300000000]);
   const [sortBy, setSortBy] = useState('جدیدترین');
   const [viewMode, setViewMode] = useState('grid');
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
 
-  // داده‌های نمونه محصولات
-  const sampleProducts = [
-    {
-      id: 1,
-      name: 'لپ تاپ ایسوس VivoBook',
-      category: 'لپ‌تاپ',
-      price: 25000000,
-      originalPrice: 28000000,
-      image: 'https://via.placeholder.com/300x200/3B82F6/white?text=لپ+تاپ+ایسوس',
-      rating: 4.5,
-      reviews: 127,
-      inStock: true,
-      isNew: true,
-      description: 'لپ تاپ قدرتمند با پردازنده Intel Core i7'
-    },
-    {
-      id: 2,
-      name: 'موبایل سامسونگ Galaxy A54',
-      category: 'موبایل',
-      price: 15000000,
-      originalPrice: 16500000,
-      image: 'https://via.placeholder.com/300x200/EF4444/white?text=سامسونگ+A54',
-      rating: 4.2,
-      reviews: 89,
-      inStock: true,
-      isNew: false,
-      description: 'گوشی هوشمند با دوربین 50 مگاپیکسل'
-    },
-    {
-      id: 3,
-      name: 'هدفون بی‌سیم سونی',
-      category: 'صوتی',
-      price: 3500000,
-      originalPrice: 4000000,
-      image: 'https://via.placeholder.com/300x200/10B981/white?text=هدفون+سونی',
-      rating: 4.8,
-      reviews: 234,
-      inStock: false,
-      isNew: false,
-      description: 'هدفون با کیفیت صدای بی‌نظیر و noise cancelling'
-    },
-    {
-      id: 4,
-      name: 'ساعت هوشمند اپل واچ',
-      category: 'پوشیدنی',
-      price: 12000000,
-      originalPrice: 13000000,
-      image: 'https://via.placeholder.com/300x200/8B5CF6/white?text=اپل+واچ',
-      rating: 4.6,
-      reviews: 156,
-      inStock: true,
-      isNew: true,
-      description: 'ساعت هوشمند با امکانات سلامتی پیشرفته'
-    },
-    {
-      id: 5,
-      name: 'تبلت آیپد ایر',
-      category: 'تبلت',
-      price: 20000000,
-      originalPrice: 22000000,
-      image: 'https://via.placeholder.com/300x200/F59E0B/white?text=آیپد+ایر',
-      rating: 4.7,
-      reviews: 98,
-      inStock: true,
-      isNew: false,
-      description: 'تبلت قدرتمند برای کار و سرگرمی'
-    },
-    {
-      id: 6,
-      name: 'دوربین کانن EOS R6',
-      category: 'دوربین',
-      price: 45000000,
-      originalPrice: 48000000,
-      image: 'https://via.placeholder.com/300x200/EC4899/white?text=کانن+R6',
-      rating: 4.9,
-      reviews: 67,
-      inStock: true,
-      isNew: true,
-      description: 'دوربین حرفه‌ای برای عکاسی و فیلمبرداری'
-    }
-  ];
 
-  const categories = ['همه', 'لپ‌تاپ', 'موبایل', 'صوتی پوشیدنی', 'تبلت', 'دوربین'];
+
 
   useEffect(() => {
     // شبیه‌سازی API call
-    setTimeout(() => {
-      setProducts(sampleProducts);
-      setFilteredProducts(sampleProducts);
-      setLoading(false);
-    }, 1000);
+    setProducts(sampleProducts);
+    setFilteredProducts(sampleProducts);
+    setLoading(false);
   }, []);
 
   useEffect(() => {
@@ -119,7 +176,7 @@ export default function ProductsPage() {
     }
 
     // فیلتر بر اساس قیمت
-    filtered = filtered.filter(product => 
+    filtered = filtered.filter(product =>
       product.price >= priceRange[0] && product.price <= priceRange[1]
     );
 
@@ -156,15 +213,24 @@ export default function ProductsPage() {
     return new Intl.NumberFormat('fa-IR').format(price) + ' تومان';
   };
 
+
+
+  // const toggleMenu = () => {
+  //   setIsOpen(!isOpen);  // تغییر وضعیت باز/بسته منو
+  // };
+
+  // const niroogahMenu = () => {
+  //   setNirogahDropDown(!nroogahDropDown)
+  // }
+
   const renderStars = (rating) => {
     return (
       <div className="flex items-center">
         {[1, 2, 3, 4, 5].map((star) => (
           <Star
             key={star}
-            className={`w-4 h-4 ${
-              star <= rating ? 'text-yellow-400 fill-current' : 'text-gray-300'
-            }`}
+            className={`w-4 h-4 ${star <= rating ? 'text-yellow-400 fill-current' : 'text-gray-300'
+              }`}
           />
         ))}
         <span className="text-sm text-gray-600 mr-1">({rating})</span>
@@ -173,13 +239,12 @@ export default function ProductsPage() {
   };
 
   const ProductCard = ({ product }) => (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group">
-        
+    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group flex flex-col justify-between">
       <div className="relative">
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+          className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
         />
         <div className="absolute top-2 left-2 flex flex-col gap-1">
           {product.isNew && (
@@ -197,11 +262,13 @@ export default function ProductsPage() {
       </div>
 
       <div className="p-4">
-        <h3 className="font-semibold text-lg mb-2 line-clamp-2">{product.name}</h3>
+        <Link href={`/products/${product.id}`}>
+          <h3 className="font-semibold text-lg mb-2 line-clamp-2">{product.name}</h3>
+        </Link>
         <p className="text-gray-600 text-sm mb-3 line-clamp-2">{product.description}</p>
-        
+
         {renderStars(product.rating)}
-        
+
         <div className="flex items-center justify-between mt-3">
           <div className="flex flex-col">
             <span className="text-lg font-bold text-blue-600">
@@ -213,24 +280,22 @@ export default function ProductsPage() {
               </span>
             )}
           </div>
-          
+
           <div className="flex items-center gap-2">
-            <span className={`text-xs px-2 py-1 rounded ${
-              product.inStock 
-                ? 'bg-green-100 text-green-800' 
-                : 'bg-red-100 text-red-800'
-            }`}>
+            <span className={`text-xs px-2 py-1 rounded ${product.inStock
+              ? 'bg-green-100 text-green-800'
+              : 'bg-red-100 text-red-800'
+              }`}>
               {product.inStock ? 'موجود' : 'ناموجود'}
             </span>
           </div>
         </div>
 
-        <button 
-          className={`w-full mt-4 py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 ${
-            product.inStock
-              ? 'bg-blue-600 hover:bg-blue-700 text-white'
-              : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-          }`}
+        <button
+          className={`w-full mt-4 py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 ${product.inStock
+            ? 'bg-blue-600 hover:bg-blue-700 text-white'
+            : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+            }`}
           disabled={!product.inStock}
         >
           <ShoppingCart className="w-4 h-4" />
@@ -258,7 +323,7 @@ export default function ProductsPage() {
           <p className="text-gray-600 text-sm mb-2">{product.description}</p>
           {renderStars(product.rating)}
         </div>
-        
+
         <div className="flex items-center justify-between mt-3">
           <div className="flex flex-col">
             <span className="text-lg font-bold text-blue-600">
@@ -270,22 +335,20 @@ export default function ProductsPage() {
               </span>
             )}
           </div>
-          
+
           <div className="flex items-center gap-3">
-            <span className={`text-xs px-2 py-1 rounded ${
-              product.inStock 
-                ? 'bg-green-100 text-green-800' 
-                : 'bg-red-100 text-red-800'
-            }`}>
+            <span className={`text-xs px-2 py-1 rounded ${product.inStock
+              ? 'bg-green-100 text-green-800'
+              : 'bg-red-100 text-red-800'
+              }`}>
               {product.inStock ? 'موجود' : 'ناموجود'}
             </span>
-            
-            <button 
-              className={`py-2 px-4 rounded-lg transition-colors flex items-center gap-2 ${
-                product.inStock
-                  ? 'bg-blue-600 hover:bg-blue-700 text-white'
-                  : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-              }`}
+
+            <button
+              className={`py-2 px-4 rounded-lg transition-colors flex items-center gap-2 ${product.inStock
+                ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                }`}
               disabled={!product.inStock}
             >
               <ShoppingCart className="w-4 h-4" />
@@ -297,25 +360,19 @@ export default function ProductsPage() {
     </div>
   );
 
+  // نمایش اسکلتون در حالت loading
   if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">در حال بارگذاری محصولات...</p>
-        </div>
-      </div>
-    );
+    return <ProductsPageSkeleton />;
   }
 
   return (
     <div className="min-h-screen bg-gray-50" dir="rtl">
-        <Navbar />
+      <Navbar />
       {/* Header */}
-      <div className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2 pt-10">فروشگاه محصولات</h1>
-          <p className="text-gray-600">بهترین محصولات تکنولوژی را از ما بخرید</p>
+      <div className=" shadow-sm border-b bg-blue-800">
+        <div className="container mx-auto px-4 py-6 bg-blue-800">
+          <h1 className="text-3xl font-bold text-gray-100 mb-2 pt-16 text-center ">فروشگاه اسپادانا</h1>
+          <p className="text-gray-200 text-center pt-2">انرژی پایدار، آینده روشن با اسپادانا</p>
         </div>
       </div>
 
@@ -339,24 +396,9 @@ export default function ProductsPage() {
               </div>
 
               {/* Categories */}
-              <div className="mb-6">
-                <h3 className="font-semibold text-gray-900 mb-3">دسته‌بندی</h3>
-                <div className="space-y-2">
-                  {categories.map((category) => (
-                    <button
-                      key={category}
-                      onClick={() => setSelectedCategory(category)}
-                      className={`w-full text-right px-3 py-2 rounded-lg transition-colors ${
-                        selectedCategory === category
-                          ? 'bg-blue-100 text-blue-800 font-medium'
-                          : 'text-gray-700 hover:bg-gray-100'
-                      }`}
-                    >
-                      {category}
-                    </button>
-                  ))}
-                </div>
-              </div>
+              <DropDown
+                selectedCategory={selectedCategory}
+                onCategoryChange={setSelectedCategory} />
 
               {/* Price Range */}
               <div className="mb-6">
@@ -365,8 +407,8 @@ export default function ProductsPage() {
                   <input
                     type="range"
                     min="0"
-                    max="50000000"
-                    step="1000000"
+                    max="300000000"
+                    step="3000000"
                     value={priceRange[1]}
                     onChange={(e) => setPriceRange([0, parseInt(e.target.value)])}
                     className="w-full"
@@ -408,21 +450,19 @@ export default function ProductsPage() {
                   <div className="flex border border-gray-300 rounded-lg overflow-hidden">
                     <button
                       onClick={() => setViewMode('grid')}
-                      className={`p-2 ${
-                        viewMode === 'grid'
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-white text-gray-600 hover:bg-gray-50'
-                      }`}
+                      className={`p-2 ${viewMode === 'grid'
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-white text-gray-600 hover:bg-gray-50'
+                        }`}
                     >
                       <Grid className="w-4 h-4" />
                     </button>
                     <button
                       onClick={() => setViewMode('list')}
-                      className={`p-2 ${
-                        viewMode === 'list'
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-white text-gray-600 hover:bg-gray-50'
-                      }`}
+                      className={`p-2 ${viewMode === 'list'
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-white text-gray-600 hover:bg-gray-50'
+                        }`}
                     >
                       <List className="w-4 h-4" />
                     </button>
