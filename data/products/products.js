@@ -1,99 +1,9 @@
-export const sampleProducts = [
+export const sampleProducts = 
+  [
   {
     id: 1,
-    name: 'لپ تاپ ایسوس VivoBook',
-    category: 'ال این وان (برق اضطراری)',
-    price: 25000000,
-    originalPrice: 28000000,
-    image: 'https://via.placeholder.com/300x200/3B82F6/white?text=لپ+تاپ+ایسوس',
-    rating: 4.5,
-    reviews: 127,
-    inStock: true,
-    isNew: true,
-    description: 'لپ تاپ قدرتمند با پردازنده Intel Core i7'
-  },
-  {
-    id: 2,
-    name: 'موبایل سامسونگ Galaxy A54',
-    category: 'پنل خورشیدی',
-    price: 15000000,
-    originalPrice: 16500000,
-    image: 'https://via.placeholder.com/300x200/EF4444/white?text=سامسونگ+A54',
-    rating: 4.2,
-    reviews: 89,
-    inStock: true,
-    isNew: false,
-    description: 'گوشی هوشمند با دوربین 50 مگاپیکسل'
-  },
-  {
-    id: 3,
-    name: 'هدفون بی‌سیم سونی',
-    category: 'یو پی اس (UPS)',
-    price: 3500000,
-    originalPrice: 4000000,
-    image: 'https://via.placeholder.com/300x200/10B981/white?text=هدفون+سونی',
-    rating: 4.8,
-    reviews: 234,
-    inStock: false,
-    isNew: false,
-    description: 'هدفون با کیفیت صدای بی‌نظیر و noise cancelling'
-  },
-  {
-    id: 4,
-    name: 'ساعت هوشمند اپل واچ',
-    category: 'باتری',
-    price: 12000000,
-    originalPrice: 13000000,
-    image: 'https://via.placeholder.com/300x200/8B5CF6/white?text=اپل+واچ',
-    rating: 4.6,
-    reviews: 156,
-    inStock: true,
-    isNew: true,
-    description: 'ساعت هوشمند با امکانات سلامتی پیشرفته'
-  },
-  {
-    id: 5,
-    name: 'تبلت آیپد ایر',
-    category: 'اینورتر خوشیدی',
-    price: 20000000,
-    originalPrice: 22000000,
-    image: 'https://via.placeholder.com/300x200/F59E0B/white?text=آیپد+ایر',
-    rating: 4.7,
-    reviews: 98,
-    inStock: true,
-    isNew: false,
-    description: 'تبلت قدرتمند برای کار و سرگرمی'
-  },
-  {
-    id: 6,
-    name: 'دوربین کانن EOS R6',
-    category: 'اینورتر خوشیدی',
-    price: 45000000,
-    originalPrice: 48000000,
-    image: 'https://via.placeholder.com/300x200/EC4899/white?text=کانن+R6',
-    rating: 4.9,
-    reviews: 67,
-    inStock: true,
-    isNew: true,
-    description: 'دوربین حرفه‌ای برای عکاسی و فیلمبرداری'
-  },
-  {
-    id: 7,
-    name: 'دوربین کانن EOS R6',
-    category: 'اینورتر خوشیدی',
-    price: 45000000,
-    originalPrice: 48000000,
-    image: 'https://via.placeholder.com/300x200/EC4899/white?text=کانن+R6',
-    rating: 4.9,
-    reviews: 67,
-    inStock: true,
-    isNew: true,
-    description: 'دوربین حرفه‌ای برای عکاسی و فیلمبرداری'
-  },
-  {
-    id: 8,
     name: "اینورتر سینوسی Suoer مدل FPC-500AL",
-    category: 'اینورتر خوشیدی',
+    category: "اینورتر خوشیدی",
     price: 2850000,
     originalPrice: 3200000,
     image: "https://solargostaran.com/wp-content/uploads/2023/suoer-sine-inverter-fpc-500al.jpg",
@@ -116,14 +26,17 @@ export const sampleProducts = [
       "محافظت در برابر ولتاژ بالا و پایین",
       "نمایشگر LED",
       "خنک کننده فن دار"
-    ]
+    ],
+    manufacturer: {
+      company: "Suoer"
+    }
   },
   {
-    id: 9,
+    id: 2,
     name: "پنل خورشیدی BiMAX 6R - مدل SP640M-66H",
     category: "پنل خورشیدی",
-    price: 85000000,
-    originalPrice: 95000000,
+    price: null,
+    originalPrice: null,
     image: "https://venturama-solar.de/wp-content/smush-webp/2024/07/4042-JA-Solar-440W-JAM54D41-LB-Full-Black-PV-Modul.png.webp",
     rating: 4.8,
     reviews: 42,
@@ -255,27 +168,341 @@ export const sampleProducts = [
       "IEC TS 62941-2016"
     ],
     warranty: {
-      "materials": "25 سال",
-      "power": "30 سال",
-      "powerOutput30Years": "87.4%"
+      materials: "25 سال",
+      power: "30 سال",
+      powerOutput30Years: "87.4%"
     },
     packaging: {
-      "piecesPerBox": 36,
-      "piecesPerContainer": 720,
-      "containerType": "40'HQ"
+      piecesPerBox: 36,
+      piecesPerContainer: "720pcs/40'HQ"
     },
     manufacturer: {
-      "company": "Sunpal Power Co., Ltd.",
-      "address": "No. 398 Gangan Road, Hefei, Anhui, China",
-      "email": "silvia@sunpalsolar.com",
-      "phone": "+86 551 6586 5992",
-      "website": "www.sunpalsolar.com"
-    },
-    testConditions: {
-      "stc": "تابش 1000W/m²، دمای سلول 25°C، AM=1.5",
-      "nmot": "تابش 800W/m²، طیف AM 1.5، دمای محیط 20°C، سرعت باد 1m/s",
-      "tolerance": "تحمل Pmax در محدوده ±3%"
+      company: "Sunpal Power Co., Ltd.",
+      address: "No. 398 Ganquan Road, Hefei, Anhui, China",
+      email: "silvia@sunpalsolar.com",
+      tel: "+86 551 6586 5992",
+      website: "www.sunpalsolar.com"
     }
   },
+  {
+    id: 3,
+    name: "اینورتر خورشیدی Deye - سری SUN-120K-136K-G",
+    category: "اینورتر خوشیدی",
+    price: null,
+    originalPrice: null,
+    image: "https://via.placeholder.com/300x200/059669/white?text=Deye+SUN-120K-136K-G",
+    rating: null,
+    reviews: null,
+    inStock: true,
+    isNew: true,
+    description: "اینورتر خورشیدی صنعتی سه فاز با قدرت 120-136 کیلووات و راندمان بالا",
+    specifications: {
+      powerRange: "120-136kW",
+      maxPVInputPower: "180-204kW",
+      maxPVInputVoltage: "1100V",
+      startupVoltage: "600V",
+      mpptVoltageRange: "250V / 200-1000V",
+      ratedPVInputVoltage: "600V",
+      maxOperatingPVInputCurrent: "40+40+40+40+40+40+40+40A",
+      maxInputShortCircuitCurrent: "60+60+60+60+60+60+60+60A",
+      numberOfMPPTrackers: "8",
+      numberOfStringsMPPTracker: "4+4+4+4+4+4+4+4",
+      maxEfficiency: "98.8%",
+      euroEfficiency: "98.2%",
+      mpptEfficiency: ">99%",
+      gridConnectionForm: "3L/N/PE",
+      ratedOutputVoltageRange: "220/380V, 230/400V 0.85Un-1.1Un",
+      ratedOutputGridFrequencyRange: "50/45-55, 60/55-65Hz",
+      powerFactorAdjustmentRange: "0.8 leading to 0.8 lagging",
+      totalCurrentHarmonicDistortion: "<3%",
+      dcInjectionCurrent: "<0.5%ln",
+      operatingTemperatureRange: "-25 to +60℃, >45℃ Derating",
+      permissibleAmbientHumidity: "0-100%",
+      permissibleAltitude: "4000m",
+      noise: "≤65dB",
+      ingressProtectionRating: "IP65",
+      inverterTopology: "Non-Isolated",
+      overVoltageCategory: "OVC II(DC), OVC III(AC)",
+      cabinetSize: "1006×516×325.5mm (Excluding Connectors and Brackets)",
+      weight: "103kg",
+      typeOfCooling: "Intelligent Air Cooling",
+      warranty: "5 Years"
+    },
+    models: [
+      {
+        model: "SUN-120K-G01P3-EU-AM8",
+        ratedACOutputActivePower: "120kW",
+        maxACOutputApparentPower: "132kVA",
+        ratedACOutputCurrent: "181.9A",
+        maxACOutputCurrent: "200A"
+      },
+      {
+        model: "SUN-125K-G01P3-EU-AM8",
+        ratedACOutputActivePower: "125kW",
+        maxACOutputApparentPower: "135kVA",
+        ratedACOutputCurrent: "189.4A",
+        maxACOutputCurrent: "200A"
+      },
+      {
+        model: "SUN-130K-G01P3-EU-AM8",
+        ratedACOutputActivePower: "130kW",
+        maxACOutputApparentPower: "135kVA",
+        ratedACOutputCurrent: "197A",
+        maxACOutputCurrent: "200A"
+      },
+      {
+        model: "SUN-135K-G01P3-EU-AM8",
+        ratedACOutputActivePower: "135kW",
+        maxACOutputApparentPower: "135kVA",
+        ratedACOutputCurrent: "204.6A",
+        maxACOutputCurrent: "200A"
+      },
+      {
+        model: "SUN-136K-G01P3-EU-AM8",
+        ratedACOutputActivePower: "136kW",
+        maxACOutputApparentPower: "136kVA",
+        ratedACOutputCurrent: "206.1A",
+        maxACOutputCurrent: "200A"
+      }
+    ],
+    features: [
+      "8 MPPT tracker for maximum energy harvest",
+      "High efficiency up to 98.8%",
+      "Wide MPPT voltage range 200-1000V",
+      "Intelligent air cooling system",
+      "Multiple communication interfaces",
+      "Advanced protection features",
+      "Grid regulation compliance"
+    ],
+    protectionFeatures: [
+      "DC Polarity Reverse Connection Protection",
+      "AC Output Overcurrent Protection",
+      "AC Output Overvoltage Protection",
+      "AC Output Short Circuit Protection",
+      "Thermal Protection",
+      "DC Terminal Insulation Impedance Monitoring",
+      "DC Component Monitoring",
+      "Ground Fault Current Monitoring",
+      "Arc Fault Circuit Interrupter (Optional)",
+      "Surge Protection Level TYPE II(DC), TYPE II(AC)",
+      "Power Network Monitoring",
+      "Island Protection Monitoring",
+      "Earth Fault Detection",
+      "Overvoltage Load Drop Protection",
+      "Residual Current (RCD) Detection"
+    ],
+    communication: {
+      monitorMode: "GPRS/WIFI/Bluetooth/4G/LAN(optional)",
+      communicationInterface: "RS485/RS232"
+    },
+    certifications: [
+      "IEC 61727",
+      "IEC 62116",
+      "CEI 0-21",
+      "EN 50549",
+      "NRS 097",
+      "RD 140",
+      "UNE 217002",
+      "OVE-Richtlinie R25",
+      "G99",
+      "VDE-AR-N 4105",
+      "IEC/EN 61000-6-1/2/3/4",
+      "IEC/EN 62109-1",
+      "IEC/EN 62109-2"
+    ],
+    manufacturer: {
+      company: "Ningbo Deye Inverter Technology Co., Ltd.",
+      address: "No. 26 South YongJiang Road, Daqi, Beilun, NingBo, Zhejiang, China",
+      tel: "+86 (0)574 86228841",
+      email: "market@deye.com.cn",
+      website: "www.deyeinverter.com"
+    }
+  },
+  {
+    id: 4,
+    name: "اینورتر هیبرید GSL - سری 60/75/80KHV",
+    category: "All in one (برق اضطراری)",
+    price: null,
+    originalPrice: null,
+    image: "https://via.placeholder.com/300x200/059669/white?text=GSL+Hybrid+Inverter+HV",
+    rating: null,
+    reviews: null,
+    inStock: true,
+    isNew: true,
+    description: "اینورتر هیبرید ولتاژ بالا سه فاز با قابلیت ذخیره انرژی و پشتیبانی از باتری",
+    specifications: {
+      powerRange: "60-80kW",
+      batteryType: "Li-Ion",
+      batteryVoltageRange: "160~1000V",
+      maxChargingCurrent: "80+80A",
+      maxDischargingCurrent: "80+80A",
+      numberOfBatteryInput: "2",
+      maxDCInputPower: "96-150kW",
+      maxPVInputPower: "120-160kW",
+      maxDCInputVoltage: "1000V",
+      startupVoltage: "180V",
+      mpptRange: "150-850V",
+      chargingStrategyForLiIonBattery: "Self-adaption to BMS",
+      ratedDCInputVoltage: "650V",
+      numberOfMPPTrackers: "6",
+      numberOfStringsMPPTracker: "2+2+2+2+2+2",
+      pvInputCurrent: "36+36+36+36+36+36A",
+      maxPVISC: "54+54+54+54+54+54A",
+      ratedACInputOutputActivePower: "60-80kW",
+      maxACInputOutputApparentPower: "66-88kW",
+      ratedACInputOutputCurrent: "91/87A - 121.3/115.9A",
+      maxACInputOutputCurrent: "113.7/108.7A - 133.4/127.6A",
+      maxContinuousACPassthrough: "128kW",
+      peakPowerOffGrid: "1.5 times of rated power, 10s",
+      powerFactorAdjustmentRange: "0.8 leading to 0.8 lagging",
+      ratedInputOutputVoltageRange: "220/380V, 230/400V 0.85Un-1.1Un",
+      gridConnectionForm: "3L+N+PE",
+      ratedInputOutputGridFrequencyRange: "50/45-55, 60/55-65Hz",
+      totalCurrentHarmonicDistortion: "<3% (of nominal power)",
+      maxEfficiency: "97.60%",
+      euroEfficiency: "97.00%",
+      mpptEfficiency: ">99%",
+      dcInjectionCurrent: "<0.5% In",
+      operatingTemperatureRange: "-40~60℃, >45℃ derating",
+      permissibleAmbientHumidity: "0-100%",
+      permissibleAltitude: "2000m",
+      noise: "≤65 dB(A)",
+      weight: "97.5kg / 214 lbs",
+      inverterTopology: "Non-Isolated",
+      overVoltageCategory: "OVC II(DC), OVC III(AC)",
+      ingressProtectionRating: "IP65",
+      typeOfCooling: "Intelligent Air Cooling",
+      warranty: "5 Years/10 Years",
+      cabinetSize: "606*927*314mm / 23.9*36.5*12.4 in (Excluding Connectors and Brackets)"
+    },
+    models: [
+      {
+        model: "GSL-60K-3PH-EU",
+        ratedPower: "60kW",
+        maxACApparentPower: "66kVA",
+        ratedACCurrent: "91/87A",
+        maxACCurrent: "113.7/108.7A"
+      },
+      {
+        model: "GSL-75K-3PH-EU",
+        ratedPower: "75kW",
+        maxACApparentPower: "82.5kVA",
+        ratedACCurrent: "113.7/108.7A",
+        maxACCurrent: "125/119.6A"
+      },
+      {
+        model: "GSL-80K-3PH-EU",
+        ratedPower: "80kW",
+        maxACApparentPower: "88kVA",
+        ratedACCurrent: "121.3/115.9A",
+        maxACCurrent: "133.4/127.6A"
+      }
+    ],
+    features: [
+      "Max charging/discharging current of 160A",
+      "Support storing energy from diesel generator",
+      "Max. 10pcs parallel for on-grid and off-grid operation",
+      "Support multiple batteries parallel",
+      "6 time periods for battery charging/discharging",
+      "Colorful touch LCD, IP65 protection degree",
+      "AC couple to retrofit existing solar system"
+    ],
+    protectionFeatures: [
+      "DC Polarity Reverse Connection Protection",
+      "AC Output Overcurrent Protection",
+      "Thermal Protection",
+      "AC Output Overvoltage Protection",
+      "AC Output Short Circuit Protection",
+      "DC Component Monitoring",
+      "Overvoltage Load Drop Protection",
+      "Ground Fault Current Monitoring",
+      "Arc Fault Circuit Interrupter (optional)",
+      "Power Network Monitoring",
+      "Island Protection Monitoring",
+      "Earth Fault Detection",
+      "DC Input Switch",
+      "DC Terminal Insulation Impedance Monitoring",
+      "Residual Current (RCD) Detection",
+      "Surge protection level TYPE II(DC), TYPE II(AC)"
+    ],
+    communication: {
+      monitorMode: "GPRS/WIFI/Bluetooth/4G/LAN(optional)",
+      communicationInterface: "RS485/RS232/CAN"
+    },
+    certifications: [
+      "IEC 61727",
+      "IEC 62116",
+      "CEI 0-21",
+      "EN 50549",
+      "NRS 097",
+      "RD 140",
+      "UNE 217002",
+      "OVE-Richtlinie R25",
+      "G99",
+      "VDE-AR-N 4105",
+      "IEC/EN 61000-6-1/2/3/4",
+      "IEC/EN 62109-1",
+      "IEC/EN 62109-2"
+    ],
+    manufacturer: {
+      company: "GSL ENERGY"
+    }
+  },
+  {
+    id: 5,
+    name: "باتری خانگی GSL-051100A-B-GBP2 - مدل 5.12kWh",
+    category: "باتری",
+    price: null,
+    originalPrice: null,
+    image: "https://via.placeholder.com/300x200/059669/white?text=GSL-051100A-B-GBP2",
+    rating: null,
+    reviews: null,
+    inStock: true,
+    isNew: true,
+    description: "باتری لیتیوم فسفات آهن خانگی با BMS پیشرفته و قابلیت نصب دیواری",
+    specifications: {
+      modelNumber: "GSL-051100A-B-GBP2",
+      batteryChemistry: "LiFePO4",
+      ratedVoltage: 51.2,
+      capacity: 100,
+      usableEnergy: 5.12,
+      maxChargeVoltage: 56,
+      minDischargeVoltage: 46,
+      maxChargeCurrent: 100,
+      maxDischargeCurrent: 100,
+      cycleLife: "6500~8500",
+      dimensions: {
+        width: 650,
+        height: 436,
+        depth: 160,
+        unit: "mm",
+        inches: "25.6×17.2×6.3 in"
+      },
+      weight: {
+        value: 45,
+        unit: "kg",
+        pounds: "99 lbs"
+      }
+    },
+    features: [
+      "Wall-mounted design",
+      "Advanced BMS system",
+      "High cycle life",
+      "Compact size"
+    ],
+    certifications: [
+      "CB IEC62619",
+      "CE-EMC",
+      "MSDS",
+      "UN38.3"
+    ],
+    manufacturer: {
+      company: "GSL ENERGY"
+    },
+    applications: [
+      "Home Energy Storage",
+      "Residential Solar Systems"
+    ]
+  }
+]
 
-];
