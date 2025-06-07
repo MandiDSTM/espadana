@@ -1,35 +1,36 @@
-export const sampleProducts = 
-  [
+export const sampleProducts = [
   {
     id: 1,
     name: "اینورتر سینوسی Suoer مدل FPC-500AL",
     category: "اینورتر خوشیدی",
     price: 2850000,
     originalPrice: 3200000,
-    image: "https://solargostaran.com/wp-content/uploads/2023/suoer-sine-inverter-fpc-500al.jpg",
+    image:
+      "https://solargostaran.com/wp-content/uploads/2023/suoer-sine-inverter-fpc-500al.jpg",
     rating: 4.3,
     reviews: 45,
     inStock: true,
     isNew: false,
-    description: "اینورتر سینوسی 500 وات با کیفیت بالا و قابلیت تبدیل برق DC به AC",
+    description:
+      "اینورتر سینوسی 500 وات با کیفیت بالا و قابلیت تبدیل برق DC به AC",
     specifications: {
       power: "500W",
       inputVoltage: "12V DC",
       outputVoltage: "220V AC",
       waveform: "Pure Sine Wave",
       efficiency: "90%",
-      brand: "Suoer"
+      brand: "Suoer",
     },
     features: [
       "موج سینوسی خالص",
       "محافظت در برابر اتصال کوتاه",
       "محافظت در برابر ولتاژ بالا و پایین",
       "نمایشگر LED",
-      "خنک کننده فن دار"
+      "خنک کننده فن دار",
     ],
     manufacturer: {
-      company: "Suoer"
-    }
+      company: "Suoer",
+    },
   },
   {
     id: 2,
@@ -37,12 +38,14 @@ export const sampleProducts =
     category: "پنل خورشیدی",
     price: null,
     originalPrice: null,
-    image: "https://venturama-solar.de/wp-content/smush-webp/2024/07/4042-JA-Solar-440W-JAM54D41-LB-Full-Black-PV-Modul.png.webp",
+    image:
+      "https://venturama-solar.de/wp-content/smush-webp/2024/07/4042-JA-Solar-440W-JAM54D41-LB-Full-Black-PV-Modul.png.webp",
     rating: 4.8,
     reviews: 42,
     inStock: true,
     isNew: true,
-    description: "پنل خورشیدی دو طرفه N-Type TOPCon با شیشه دوبل و حداکثر راندمان 23.68%",
+    description:
+      "پنل خورشیدی دو طرفه N-Type TOPCon با شیشه دوبل و حداکثر راندمان 23.68%",
     specifications: {
       model: "SP640M-66H",
       maxPower: "615-640W",
@@ -53,15 +56,13 @@ export const sampleProducts =
       weight: "33.5kg",
       dimensions: "2384×1134×30mm",
       maxSystemVoltage: "1500V",
-      glassThickness: {
-        front: "2.0mm Anti-Reflection Coating",
-        back: "2.0mm Heat Strengthened Glass"
-      },
+      glassThicknessFront: "2.0mm Anti-Reflection Coating",
+      glassThicknessBack: "2.0mm Heat Strengthened Glass",
       frame: "Aluminum Alloy",
       cable: "4mm², 300mm length, UV resistant",
       connector: "MC4 Compatible",
       bifaciality: "80±5%",
-      junctionBox: "IP68"
+      junctionBox: "IP68",
     },
     electricalParameters: {
       stc: [
@@ -72,7 +73,7 @@ export const sampleProducts =
           shortCircuitCurrent: 15.88,
           voltageAtMaxPower: 40.86,
           currentAtMaxPower: 15.05,
-          moduleEfficiency: 22.77
+          moduleEfficiency: 22.77,
         },
         {
           moduleType: "620W",
@@ -80,17 +81,17 @@ export const sampleProducts =
           openCircuitVoltage: 49.55,
           shortCircuitCurrent: 15.93,
           voltageAtMaxPower: 41.06,
-          currentAtMaxPower: 15.10,
-          moduleEfficiency: 22.95
+          currentAtMaxPower: 15.1,
+          moduleEfficiency: 22.95,
         },
         {
           moduleType: "625W",
           maxPower: 625,
           openCircuitVoltage: 49.75,
-          shortCircuitCurrent: 16.00,
+          shortCircuitCurrent: 16.0,
           voltageAtMaxPower: 41.26,
           currentAtMaxPower: 15.15,
-          moduleEfficiency: 23.14
+          moduleEfficiency: 23.14,
         },
         {
           moduleType: "630W",
@@ -98,17 +99,17 @@ export const sampleProducts =
           openCircuitVoltage: 49.95,
           shortCircuitCurrent: 16.05,
           voltageAtMaxPower: 41.46,
-          currentAtMaxPower: 15.20,
-          moduleEfficiency: 23.32
+          currentAtMaxPower: 15.2,
+          moduleEfficiency: 23.32,
         },
         {
           moduleType: "635W",
           maxPower: 635,
           openCircuitVoltage: 50.15,
-          shortCircuitCurrent: 16.10,
+          shortCircuitCurrent: 16.1,
           voltageAtMaxPower: 41.66,
           currentAtMaxPower: 15.25,
-          moduleEfficiency: 23.50
+          moduleEfficiency: 23.5,
         },
         {
           moduleType: "640W",
@@ -116,44 +117,44 @@ export const sampleProducts =
           openCircuitVoltage: 50.35,
           shortCircuitCurrent: 16.16,
           voltageAtMaxPower: 41.86,
-          currentAtMaxPower: 15.30,
-          moduleEfficiency: 23.68
-        }
+          currentAtMaxPower: 15.3,
+          moduleEfficiency: 23.68,
+        },
       ],
       nmot: {
         maxPower: "469-488W",
         openCircuitVoltage: "46.81-47.81V",
         shortCircuitCurrent: "12.81-13.07A",
         voltageAtMaxPower: "38.40-39.40V",
-        currentAtMaxPower: "12.21-12.39A"
+        currentAtMaxPower: "12.21-12.39A",
       },
       bifacialOutput10Percent: {
         outputPower: "677-703W",
         openCircuitVoltage: "49.35-50.35V",
         shortCircuitCurrent: "17.47-17.72A",
         voltageAtMaxPower: "40.86-41.86V",
-        currentAtMaxPower: "16.57-16.81A"
-      }
+        currentAtMaxPower: "16.57-16.81A",
+      },
     },
     temperatureCharacteristics: {
       nmot: "41±3°C",
       tempCoefficientVoc: "-0.25%/°C",
       tempCoefficientIsc: "+0.04%/°C",
-      tempCoefficientPmax: "-0.30%/°C"
+      tempCoefficientPmax: "-0.30%/°C",
     },
     maximumRatings: {
       outputTolerance: "0~+5W",
       operatingTemperature: "-40°C~+85°C",
       windLoad: "2400Pa",
       snowLoad: "5400Pa",
-      fuseCurrent: "25A"
+      fuseCurrent: "25A",
     },
     features: [
       "سلول N-Type با ابعاد 182×210mm و بالاترین راندمان",
       "ماژول دو طرفه با شیشه دوبل که 5% تا 25% خروجی اضافی فراهم می‌کند",
       "ظرفیت بار مکانیکی تست شده توسط TUV",
       "محافظت PID برای کمینه کردن احتمال تضعیف",
-      "سازگاری با محیط سخت - تست اسپری نمک و خوردگی آمونیاک"
+      "سازگاری با محیط سخت - تست اسپری نمک و خوردگی آمونیاک",
     ],
     certifications: [
       "IEC61215/61730",
@@ -165,24 +166,24 @@ export const sampleProducts =
       "ISO 14001:2015",
       "ISO 45001:2018",
       "ISO 50001:2011",
-      "IEC TS 62941-2016"
+      "IEC TS 62941-2016",
     ],
     warranty: {
       materials: "25 سال",
       power: "30 سال",
-      powerOutput30Years: "87.4%"
+      powerOutput30Years: "87.4%",
     },
     packaging: {
       piecesPerBox: 36,
-      piecesPerContainer: "720pcs/40'HQ"
+      piecesPerContainer: "720pcs/40'HQ",
     },
     manufacturer: {
       company: "Sunpal Power Co., Ltd.",
       address: "No. 398 Ganquan Road, Hefei, Anhui, China",
       email: "silvia@sunpalsolar.com",
       tel: "+86 551 6586 5992",
-      website: "www.sunpalsolar.com"
-    }
+      website: "www.sunpalsolar.com",
+    },
   },
   {
     id: 3,
@@ -190,12 +191,14 @@ export const sampleProducts =
     category: "اینورتر خوشیدی",
     price: null,
     originalPrice: null,
-    image: "https://via.placeholder.com/300x200/059669/white?text=Deye+SUN-120K-136K-G",
+    image:
+      "https://via.placeholder.com/300x200/059669/white?text=Deye+SUN-120K-136K-G",
     rating: null,
     reviews: null,
     inStock: true,
     isNew: true,
-    description: "اینورتر خورشیدی صنعتی سه فاز با قدرت 120-136 کیلووات و راندمان بالا",
+    description:
+      "اینورتر خورشیدی صنعتی سه فاز با قدرت 120-136 کیلووات و راندمان بالا",
     specifications: {
       powerRange: "120-136kW",
       maxPVInputPower: "180-204kW",
@@ -226,7 +229,7 @@ export const sampleProducts =
       cabinetSize: "1006×516×325.5mm (Excluding Connectors and Brackets)",
       weight: "103kg",
       typeOfCooling: "Intelligent Air Cooling",
-      warranty: "5 Years"
+      warranty: "5 Years",
     },
     models: [
       {
@@ -234,36 +237,36 @@ export const sampleProducts =
         ratedACOutputActivePower: "120kW",
         maxACOutputApparentPower: "132kVA",
         ratedACOutputCurrent: "181.9A",
-        maxACOutputCurrent: "200A"
+        maxACOutputCurrent: "200A",
       },
       {
         model: "SUN-125K-G01P3-EU-AM8",
         ratedACOutputActivePower: "125kW",
         maxACOutputApparentPower: "135kVA",
         ratedACOutputCurrent: "189.4A",
-        maxACOutputCurrent: "200A"
+        maxACOutputCurrent: "200A",
       },
       {
         model: "SUN-130K-G01P3-EU-AM8",
         ratedACOutputActivePower: "130kW",
         maxACOutputApparentPower: "135kVA",
         ratedACOutputCurrent: "197A",
-        maxACOutputCurrent: "200A"
+        maxACOutputCurrent: "200A",
       },
       {
         model: "SUN-135K-G01P3-EU-AM8",
         ratedACOutputActivePower: "135kW",
         maxACOutputApparentPower: "135kVA",
         ratedACOutputCurrent: "204.6A",
-        maxACOutputCurrent: "200A"
+        maxACOutputCurrent: "200A",
       },
       {
         model: "SUN-136K-G01P3-EU-AM8",
         ratedACOutputActivePower: "136kW",
         maxACOutputApparentPower: "136kVA",
         ratedACOutputCurrent: "206.1A",
-        maxACOutputCurrent: "200A"
-      }
+        maxACOutputCurrent: "200A",
+      },
     ],
     features: [
       "8 MPPT tracker for maximum energy harvest",
@@ -272,7 +275,7 @@ export const sampleProducts =
       "Intelligent air cooling system",
       "Multiple communication interfaces",
       "Advanced protection features",
-      "Grid regulation compliance"
+      "Grid regulation compliance",
     ],
     protectionFeatures: [
       "DC Polarity Reverse Connection Protection",
@@ -289,11 +292,11 @@ export const sampleProducts =
       "Island Protection Monitoring",
       "Earth Fault Detection",
       "Overvoltage Load Drop Protection",
-      "Residual Current (RCD) Detection"
+      "Residual Current (RCD) Detection",
     ],
     communication: {
       monitorMode: "GPRS/WIFI/Bluetooth/4G/LAN(optional)",
-      communicationInterface: "RS485/RS232"
+      communicationInterface: "RS485/RS232",
     },
     certifications: [
       "IEC 61727",
@@ -308,15 +311,16 @@ export const sampleProducts =
       "VDE-AR-N 4105",
       "IEC/EN 61000-6-1/2/3/4",
       "IEC/EN 62109-1",
-      "IEC/EN 62109-2"
+      "IEC/EN 62109-2",
     ],
     manufacturer: {
       company: "Ningbo Deye Inverter Technology Co., Ltd.",
-      address: "No. 26 South YongJiang Road, Daqi, Beilun, NingBo, Zhejiang, China",
+      address:
+        "No. 26 South YongJiang Road, Daqi, Beilun, NingBo, Zhejiang, China",
       tel: "+86 (0)574 86228841",
       email: "market@deye.com.cn",
-      website: "www.deyeinverter.com"
-    }
+      website: "www.deyeinverter.com",
+    },
   },
   {
     id: 4,
@@ -324,12 +328,14 @@ export const sampleProducts =
     category: "All in one (برق اضطراری)",
     price: null,
     originalPrice: null,
-    image: "https://via.placeholder.com/300x200/059669/white?text=GSL+Hybrid+Inverter+HV",
+    image:
+      "https://via.placeholder.com/300x200/059669/white?text=GSL+Hybrid+Inverter+HV",
     rating: null,
     reviews: null,
     inStock: true,
     isNew: true,
-    description: "اینورتر هیبرید ولتاژ بالا سه فاز با قابلیت ذخیره انرژی و پشتیبانی از باتری",
+    description:
+      "اینورتر هیبرید ولتاژ بالا سه فاز با قابلیت ذخیره انرژی و پشتیبانی از باتری",
     specifications: {
       powerRange: "60-80kW",
       batteryType: "Li-Ion",
@@ -373,7 +379,8 @@ export const sampleProducts =
       ingressProtectionRating: "IP65",
       typeOfCooling: "Intelligent Air Cooling",
       warranty: "5 Years/10 Years",
-      cabinetSize: "606*927*314mm / 23.9*36.5*12.4 in (Excluding Connectors and Brackets)"
+      cabinetSize:
+        "606*927*314mm / 23.9*36.5*12.4 in (Excluding Connectors and Brackets)",
     },
     models: [
       {
@@ -381,22 +388,22 @@ export const sampleProducts =
         ratedPower: "60kW",
         maxACApparentPower: "66kVA",
         ratedACCurrent: "91/87A",
-        maxACCurrent: "113.7/108.7A"
+        maxACCurrent: "113.7/108.7A",
       },
       {
         model: "GSL-75K-3PH-EU",
         ratedPower: "75kW",
         maxACApparentPower: "82.5kVA",
         ratedACCurrent: "113.7/108.7A",
-        maxACCurrent: "125/119.6A"
+        maxACCurrent: "125/119.6A",
       },
       {
         model: "GSL-80K-3PH-EU",
         ratedPower: "80kW",
         maxACApparentPower: "88kVA",
         ratedACCurrent: "121.3/115.9A",
-        maxACCurrent: "133.4/127.6A"
-      }
+        maxACCurrent: "133.4/127.6A",
+      },
     ],
     features: [
       "Max charging/discharging current of 160A",
@@ -405,7 +412,7 @@ export const sampleProducts =
       "Support multiple batteries parallel",
       "6 time periods for battery charging/discharging",
       "Colorful touch LCD, IP65 protection degree",
-      "AC couple to retrofit existing solar system"
+      "AC couple to retrofit existing solar system",
     ],
     protectionFeatures: [
       "DC Polarity Reverse Connection Protection",
@@ -423,11 +430,11 @@ export const sampleProducts =
       "DC Input Switch",
       "DC Terminal Insulation Impedance Monitoring",
       "Residual Current (RCD) Detection",
-      "Surge protection level TYPE II(DC), TYPE II(AC)"
+      "Surge protection level TYPE II(DC), TYPE II(AC)",
     ],
     communication: {
       monitorMode: "GPRS/WIFI/Bluetooth/4G/LAN(optional)",
-      communicationInterface: "RS485/RS232/CAN"
+      communicationInterface: "RS485/RS232/CAN",
     },
     certifications: [
       "IEC 61727",
@@ -442,11 +449,11 @@ export const sampleProducts =
       "VDE-AR-N 4105",
       "IEC/EN 61000-6-1/2/3/4",
       "IEC/EN 62109-1",
-      "IEC/EN 62109-2"
+      "IEC/EN 62109-2",
     ],
     manufacturer: {
-      company: "GSL ENERGY"
-    }
+      company: "GSL ENERGY",
+    },
   },
   {
     id: 5,
@@ -454,12 +461,14 @@ export const sampleProducts =
     category: "باتری",
     price: null,
     originalPrice: null,
-    image: "https://via.placeholder.com/300x200/059669/white?text=GSL-051100A-B-GBP2",
+    image:
+      "https://via.placeholder.com/300x200/059669/white?text=GSL-051100A-B-GBP2",
     rating: null,
     reviews: null,
     inStock: true,
     isNew: true,
-    description: "باتری لیتیوم فسفات آهن خانگی با BMS پیشرفته و قابلیت نصب دیواری",
+    description:
+      "باتری لیتیوم فسفات آهن خانگی با BMS پیشرفته و قابلیت نصب دیواری",
     specifications: {
       modelNumber: "GSL-051100A-B-GBP2",
       batteryChemistry: "LiFePO4",
@@ -476,33 +485,24 @@ export const sampleProducts =
         height: 436,
         depth: 160,
         unit: "mm",
-        inches: "25.6×17.2×6.3 in"
+        inches: "25.6×17.2×6.3 in",
       },
       weight: {
         value: 45,
         unit: "kg",
-        pounds: "99 lbs"
-      }
+        pounds: "99 lbs",
+      },
     },
     features: [
       "Wall-mounted design",
       "Advanced BMS system",
       "High cycle life",
-      "Compact size"
+      "Compact size",
     ],
-    certifications: [
-      "CB IEC62619",
-      "CE-EMC",
-      "MSDS",
-      "UN38.3"
-    ],
+    certifications: ["CB IEC62619", "CE-EMC", "MSDS", "UN38.3"],
     manufacturer: {
-      company: "GSL ENERGY"
+      company: "GSL ENERGY",
     },
-    applications: [
-      "Home Energy Storage",
-      "Residential Solar Systems"
-    ]
-  }
-]
-
+    applications: ["Home Energy Storage", "Residential Solar Systems"],
+  },
+];
