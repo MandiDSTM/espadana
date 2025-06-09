@@ -94,8 +94,8 @@ export default function Header() {
   };
 
   const typingItems = {
-    subtitle: ["راهکارهای نوین انرژی‌های سبز", 1000],
-    description: ["ترسیم هوشمندانه از آینده انرژی خورشیدی", 1000],
+    subtitle: ["راه‌حل‌های بهینه انرژی پاک", 1000],
+    description: ["ساخت آینده انرژی با تکنولوژی خورشیدی", 1000],
   };
 
   // Show loading until videoLoaded becomes true
@@ -163,13 +163,13 @@ export default function Header() {
                 )}
               </div>
               <h1
-                className={`text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold tracking-tight transition-all duration-700 delay-500 ${
+                className={`text-3xl md:text-4xl lg:text-4xl  font-bold tracking-tight transition-all duration-700 delay-500 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
                 }`}
               >
-                راهکارهای نسل جدید برای
+                طراحی بهینه، اجرای دقیق، بازدهی حداکثری
                 <span className="block mt-3 bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-cyan-300 py-1">
-                  آینده ای سبز با اسپادانا
+                 خدمات EPC با بازده مطلوب
                 </span>
               </h1>
               <div

@@ -2,28 +2,29 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import LinkWithProgress from "../linkWithProgress/LinkWithProgress";
 
 export default function Navbar({ scrollValue }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-    useEffect(() => {
-      if(scrollValue) {
+  useEffect(() => {
+    if (scrollValue) {
+      setScrolled(true);
+      return;
+    }
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
         setScrolled(true);
-        return;
+      } else {
+        setScrolled(false);
       }
-      const handleScroll = () => {
-        if (window.scrollY > 10) {
-          setScrolled(true);
-        } else {
-          setScrolled(false);
-        }
-      };
+    };
 
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
-  
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
 
   const menuItems = [
     { name: "خانه", href: "/" },
@@ -104,7 +105,7 @@ export default function Navbar({ scrollValue }) {
               {menuItems.map((item) => (
                 <li key={item.name} className="gradient-hover-item relative">
                   {item.name === "محصولات" ? (
-                    <Link
+                    <LinkWithProgress
                       href="/products"
                       className={`${scrolled
                         ? "text-gray-800"
@@ -112,7 +113,7 @@ export default function Navbar({ scrollValue }) {
                         } hover:text-gray-900 hover:font-bold`}
                     >
                       {item.name}
-                    </Link>
+                    </LinkWithProgress>
                   ) : (
                     <Link
                       href={item.href}

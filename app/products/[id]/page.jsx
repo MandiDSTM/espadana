@@ -10,6 +10,7 @@ import {
   CheckCircle,
   AlertCircle,
 } from "lucide-react";
+import WhatsAppButton from "@/app/components/ui/whatsupButton/WhatsButton";
 
 export default async function ProductDetail({ params }) {
   const { id } = await params;
@@ -135,7 +136,9 @@ export default async function ProductDetail({ params }) {
             <h4 className="text-lg font-semibold mb-4 text-green-600">
               پارامترهای NMOT
             </h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1  gap-4"
+              style={{ direction: "ltr !important" }}
+            >
               {Object.entries(product.electricalParameters.nmot).map(
                 ([key, value]) => (
                   <div
@@ -252,11 +255,10 @@ export default async function ProductDetail({ params }) {
                         {[...Array(5)].map((_, i) => (
                           <Star
                             key={i}
-                            className={`w-5 h-5 ${
-                              i < Math.floor(product.rating)
-                                ? "text-yellow-400 fill-current"
-                                : "text-gray-300"
-                            }`}
+                            className={`w-5 h-5 ${i < Math.floor(product.rating)
+                              ? "text-yellow-400 fill-current"
+                              : "text-gray-300"
+                              }`}
                           />
                         ))}
                       </div>
@@ -295,7 +297,7 @@ export default async function ProductDetail({ params }) {
                           {Math.round(
                             ((product.originalPrice - product.price) /
                               product.originalPrice) *
-                              100
+                            100
                           )}
                           % تخفیف
                         </div>
@@ -314,9 +316,9 @@ export default async function ProductDetail({ params }) {
               {/* Quick Actions */}
 
               <div className="flex gap-4 ">
-                <button className="flex-1 bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
-                  درخواست قیمت
-                </button>
+                <div className="flex-1">
+                <WhatsAppButton />
+                </div>
                 <button className="px-6 py-3 border border-gray-300 rounded-lg font-medium hover:bg-gray-50 transition-colors">
                   مقایسه محصولات
                 </button>
@@ -353,7 +355,9 @@ export default async function ProductDetail({ params }) {
             {product.temperatureCharacteristics &&
               renderSection(
                 "مشخصات دمایی",
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4"
+                  dir="ltr"
+                >
                   {Object.entries(product.temperatureCharacteristics).map(
                     ([key, value]) => (
                       <div
@@ -374,7 +378,7 @@ export default async function ProductDetail({ params }) {
             {product.maximumRatings &&
               renderSection(
                 "حداکثر مقادیر",
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div dir="ltr" className="grid grid-cols-1  gap-4">
                   {Object.entries(product.maximumRatings).map(
                     ([key, value]) => (
                       <div
@@ -398,11 +402,11 @@ export default async function ProductDetail({ params }) {
             {product.features &&
               renderSection(
                 "ویژگی‌های کلیدی",
-                <ul className="space-y-3">
+                <ul className="space-y-3 mt-5">
                   {product.features.map((feature, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
+                    <li key={index} className="flex items-center gap-3 shadow-sm px-1 rounded-lg  py-2">
+                      <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0  " />
+                      <span className="text-gray-700 text-sm">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -442,11 +446,11 @@ export default async function ProductDetail({ params }) {
             {product.warranty &&
               renderSection(
                 "گارانتی",
-                <div className="space-y-3">
+                <div dir="ltr" className="space-y-3 mt-5 text-left">
                   {Object.entries(product.warranty).map(([key, value]) => (
                     <div
                       key={key}
-                      className="flex justify-between items-center"
+                      className="flex justify-between items-center text-left"
                     >
                       <span className="text-gray-600">{key}</span>
                       <span className="text-gray-900 font-medium">{value}</span>
@@ -473,11 +477,12 @@ export default async function ProductDetail({ params }) {
             {product.manufacturer &&
               renderSection(
                 "اطلاعات سازنده",
-                <div className="space-y-3">
+                <div dir="ltr" className="space-y-3 text-left"
+                >
                   {Object.entries(product.manufacturer).map(([key, value]) => (
-                    <div key={key}>
-                      <span className="text-gray-600 block mb-1">{key}:</span>
-                      <span className="text-gray-900 font-medium break-all">
+                    <div key={key} className="text-left">
+                      <span className="text-gray-600 block mb-1 text-left">{key}: </span>
+                      <span className="text-gray-900 font-medium break-all ">
                         {value}
                       </span>
                     </div>

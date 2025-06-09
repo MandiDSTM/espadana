@@ -5,6 +5,7 @@ import Navbar from '../components/layout/Navbar';
 import { sampleProducts } from '@/data/products/products'
 import Link from 'next/link';
 import DropDown from '../components/ui/dropdown/DropDown'
+import LinkWithProgress from '../components/linkWithProgress/LinkWithProgress';
 
 // کامپوننت Skeleton
 const Skeleton = ({ width = '100%', height = '20px', className = '', rounded = false }) => {
@@ -262,9 +263,9 @@ export default function ProductsPage() {
       </div>
 
       <div className="p-4">
-        <Link href={`/products/${product.id}`}>
+        <LinkWithProgress href={`/products/${product.id}`}>
           <h3 className="font-semibold text-lg mb-2 line-clamp-2">{product.name}</h3>
-        </Link>
+        </LinkWithProgress>
         <p className="text-gray-600 text-sm mb-3 line-clamp-2">{product.description}</p>
 
         {renderStars(product.rating)}

@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import ProgressBar from "./components/progressBar/ProgressBar";
 
 const vazirmatn = localFont({
   src: [
@@ -40,6 +41,7 @@ export default function RootLayout({ children }) {
     <html lang="fa" dir="rtl" className={vazirmatn.variable}>
       <body
       >
+        <ProgressBar />
         {children}
       </body>
     </html>
