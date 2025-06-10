@@ -44,17 +44,17 @@ export default function Navbar({ scrollValue }) {
           <div className=" flex items-center gap-3">
             {!scrolled ? (
               <Image
-                src="/images/Silicon-logo-white.svg"
-                width={50}
-                height={50}
+                src="/images/spadana-white.svg"
+                width={80}
+                height={80}
                 alt="silicon-energy"
                 className="cursor-pointer"
               />
             ) : (
               <Image
-                src="/images/Silicon-logo.svg"
-                width={50}
-                height={50}
+                src="/images/spadana-color.svg"
+                width={80}
+                height={80}
                 alt="silicon-energy"
                 className="cursor-pointer"
               />

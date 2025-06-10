@@ -2,6 +2,8 @@ import React from "react";
 import { sampleProducts } from "@/data/products/products";
 import Navbar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/layout/Footer";
+import CatalogDownload from '../../components/CatalogeDownload';
+
 import {
   Star,
   Award,
@@ -59,7 +61,7 @@ export default async function ProductDetail({ params }) {
         {Object.entries(product.specifications).map(([key, value]) => (
           <div
             key={key}
-            className="flex justify-between items-center py-3 border-b border-gray-100 last:border-b-0"
+            className="flex justify-between items-center py-3 border-b border-gray-100 last:border-b-0 md:text-base text-sm"
             dir="ltr"
           >
             <span className="text-gray-600 font-medium">{key}</span>
@@ -143,6 +145,7 @@ export default async function ProductDetail({ params }) {
                 ([key, value]) => (
                   <div
                     key={key}
+                    dir="ltr"
                     className="flex justify-between items-center py-2 border-b border-gray-100"
                   >
                     <span className="text-gray-600">{key}</span>
@@ -246,8 +249,9 @@ export default async function ProductDetail({ params }) {
                 <h1 className="text-2xl font-bold text-gray-900 mb-2 ">
                   {product.name}
                 </h1>
-                <div className="space-y-4 mt-5">
-                  <p className="text-lg text-gray-600">{product.category}</p>
+                <p className="text-sm text-gray-600">{product.category}</p>
+
+                <div className="space-y-4 mt-8">
                   {/* Rating */}
                   {product.rating && (
                     <div className="flex items-center gap-2">
@@ -317,10 +321,10 @@ export default async function ProductDetail({ params }) {
 
               <div className="flex gap-4 ">
                 <div className="flex-1">
-                <WhatsAppButton />
+                  <WhatsAppButton />
                 </div>
-                <button className="px-6 py-3 border border-gray-300 rounded-lg font-medium hover:bg-gray-50 transition-colors">
-                  مقایسه محصولات
+                <button>
+                 <CatalogDownload />
                 </button>
               </div>
             </div>

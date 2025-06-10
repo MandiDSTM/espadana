@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { FaInstagram, FaTwitter, FaLinkedinIn, FaTelegramPlane } from 'react-icons/fa';
 import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
 
@@ -14,7 +15,7 @@ export default function Footer() {
           <div className="flex flex-col">
             <h3 className="text-xl font-bold mb-5 text-blue-400">پیشرو فناوران اسپادانا</h3>
             <div className="mb-4">
-              <img src="/logo-light.png" alt="لوگو شرکت" className="h-12 mb-3" />
+              <Image src="/images/spadana-color.svg" alt="لوگو شرکت"  width={150} height={150}/>
             </div>
             <p className="text-gray-300 mb-6 text-justify">
               شرکت ما با بیش از ۱۰ سال تجربه در زمینه ارائه خدمات مشاوره و تأمین انرژی‌های تجدیدپذیر، همواره در تلاش است تا بهترین راهکارها را برای مشتریان خود فراهم آورد.

@@ -39,7 +39,7 @@ export const sampleProducts = [
     price: null,
     originalPrice: null,
     image:
-      "https://venturama-solar.de/wp-content/smush-webp/2024/07/4042-JA-Solar-440W-JAM54D41-LB-Full-Black-PV-Modul.png.webp",
+      "/images/product/solar-panel.webp",
     rating: 4.8,
     reviews: 42,
     inStock: true,
@@ -351,9 +351,9 @@ export const sampleProducts = [
       chargingStrategyForLiIonBattery: "Self-adaption to BMS",
       ratedDCInputVoltage: "650V",
       numberOfMPPTrackers: "6",
-      numberOfStringsMPPTracker: "2+2+2+2+2+2",
-      pvInputCurrent: "36+36+36+36+36+36A",
-      maxPVISC: "54+54+54+54+54+54A",
+      numberOfStringsMPPTracker: "6",
+      pvInputCurrent: "216A",
+      maxPVISC: "324A",
       ratedACInputOutputActivePower: "60-80kW",
       maxACInputOutputApparentPower: "66-88kW",
       ratedACInputOutputCurrent: "91/87A - 121.3/115.9A",
@@ -480,18 +480,8 @@ export const sampleProducts = [
       maxChargeCurrent: 100,
       maxDischargeCurrent: 100,
       cycleLife: "6500~8500",
-      dimensions: {
-        width: 650,
-        height: 436,
-        depth: 160,
-        unit: "mm",
-        inches: "25.6×17.2×6.3 in",
-      },
-      weight: {
-        value: 45,
-        unit: "kg",
-        pounds: "99 lbs",
-      },
+      dimensions: "width: 650 height: 436 depth: 160 unit: mm inches: 25.6×17.2×6.3 in",
+      weight: "value: 45,unit: kg,pounds: 99 lbs"
     },
     features: [
       "Wall-mounted design",
