@@ -131,7 +131,7 @@ export default function Header() {
             disablePictureInPicture
             disableRemotePlayback
           >
-            <source src="/videos/spadana.webm" type="video/webm" />
+            {/* <source src="/videos/spadana.webm" type="video/webm" /> */}
             <source src="/videos/spadana.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -147,7 +147,7 @@ export default function Header() {
       <div className="relative flex items-center w-full h-full z-30 pt-16 md:pt-20 lg:pt-24 xl:pt-20 2xl:pt-16">
         <div className="w-full px-4 md:px-8 lg:px-16 max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-2">
           <div
-            className={`bg-slate-900/50 backdrop-blur-md rounded-xl p-8 md:p-10 max-w-2xl mx-auto lg:mr-0 lg:ml-auto mt-0 shadow-xl shadow-slate-900/20 border border-slate-700/30 transition-all duration-1000 transform ${
+            className={`bg-slate-900/50 backdrop-blur-md rounded-xl p-8 md:p-8 md:py-10 max-w-2xl mx-auto lg:mr-0 lg:ml-auto mt-0 shadow-xl shadow-slate-900/20 border border-slate-700/30 transition-all duration-1000 transform ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >

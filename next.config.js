@@ -1,13 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
-  
-  // تنظیمات برای رفع مشکل prerendering
-  experimental: {
-    serverComponentsExternalPackages: []
-  },
-  
-  // تنظیمات webpack برای محیط serverless
+
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {
@@ -20,20 +14,7 @@ const nextConfig = {
     }
     return config;
   },
-  
-  // غیرفعال کردن telemetry
-  telemetry: {
-    disabled: true
-  },
 
-  // تنظیمات برای debugging
-  logging: {
-    fetches: {
-      fullUrl: true,
-    },
-  },
-
-  // تنظیمات برای static files
   async headers() {
     return [
       {

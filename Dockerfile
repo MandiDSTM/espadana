@@ -16,15 +16,16 @@ COPY . .
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
-# Debug: Show Next.js version and check files
-RUN echo "=== Debug Info ===" && \
-    npm list next && \
-    ls -la && \
-    ls -la app/ || echo "No app directory" && \
-    cat next.config.js || echo "No next.config.js found"
+# Build the application
+RUN npm run build
 
-# Build the application with verbose output
-RUN npm run build -- --debug 2>&1 | tee build.log || (echo "=== Build failed, showing log ===" && cat build.log && exit 1)
+# Debug: Check what was created
+RUN echo "=== Build Output Debug ===" && \
+    ls -la .next/ && \
+    echo "=== Checking standalone ===" && \
+    ls -la .next/standalone/ || echo "No standalone directory found" && \
+    echo "=== Checking static ===" && \
+    ls -la .next/static/ || echo "No static directory found"
 
 # Stage 2: Run the application
 FROM node:20-alpine AS runner
@@ -40,12 +41,19 @@ ENV PORT=6000
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# Copy necessary files from build stage
+# Copy public files
 COPY --from=builder /app/public ./public
 
-# Set the correct permission for precompiled files
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+# Copy Next.js build output - with conditional check
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+
+# Alternative: If standalone doesn't exist, copy the whole .next
+# COPY --from=builder /app/.next ./.next
+# COPY --from=builder /app/node_modules ./node_modules
+
+# Change ownership
+RUN chown -R nextjs:nodejs /app
 
 # Switch to non-root user
 USER nextjs
