@@ -78,7 +78,7 @@ export default async function ProductDetail({ params }) {
     if (!product.electricalParameters) return null;
 
     return (
-      <div className="space-y-6">
+      <div className="space-y-6 ">
         {/* STC Parameters */}
         {product.electricalParameters.stc && (
           <div>
@@ -401,7 +401,7 @@ export default async function ProductDetail({ params }) {
           </div>
 
           {/* Sidebar */}
-          <div className="space-y-6">
+          <div className="space-y-6 mb-10">
             {/* Features */}
             {product.features &&
               renderSection(
@@ -481,7 +481,7 @@ export default async function ProductDetail({ params }) {
             {product.manufacturer &&
               renderSection(
                 "اطلاعات سازنده",
-                <div dir="ltr" className="space-y-3 text-left"
+                <div dir="ltr" className="space-y-3 text-left "
                 >
                   {Object.entries(product.manufacturer).map(([key, value]) => (
                     <div key={key} className="text-left">

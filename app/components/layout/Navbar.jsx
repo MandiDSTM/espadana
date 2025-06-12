@@ -45,16 +45,16 @@ export default function Navbar({ scrollValue }) {
             {!scrolled ? (
               <Image
                 src="/images/spadana-white.svg"
-                width={80}
-                height={80}
+                width={30}
+                height={30}
                 alt="silicon-energy"
                 className="cursor-pointer"
               />
             ) : (
               <Image
                 src="/images/spadana-color.svg"
-                width={80}
-                height={80}
+                width={30}
+                height={30}
                 alt="silicon-energy"
                 className="cursor-pointer"
               />
@@ -164,13 +164,13 @@ export default function Navbar({ scrollValue }) {
             </li>
 
             <li>
-              <Link
-                href="#calculator"
+              <LinkWithProgress
+                href="/products"
                 className="block py-2 text-gray-200 hover:text-white hover:w-full hover:bg-gray-400 hover:pr-4 rounded-lg transition-all duration-300 ease-in-out"
                 onClick={() => setIsOpen(false)}
               >
-                ماشین حساب{" "}
-              </Link>
+                محصولات{" "}
+              </LinkWithProgress>
             </li>
 
             <li>

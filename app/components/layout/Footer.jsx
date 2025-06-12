@@ -13,9 +13,9 @@ export default function Footer() {
           
           {/* ستون اول - درباره ما */}
           <div className="flex flex-col">
-            <h3 className="text-xl font-bold mb-5 text-blue-400">پیشرو فناوران اسپادانا</h3>
+            <h3 className="text-xl font-bold mb-2 text-blue-400">پیشرو فناوران اسپادانا</h3>
             <div className="mb-4">
-              <Image src="/images/spadana-color.svg" alt="لوگو شرکت"  width={150} height={150}/>
+              <Image src="/images/spadana-color.svg" alt="لوگو شرکت"  width={90} height={100}/>
             </div>
             <p className="text-gray-300 mb-6 text-justify">
               شرکت ما با بیش از ۱۰ سال تجربه در زمینه ارائه خدمات مشاوره و تأمین انرژی‌های تجدیدپذیر، همواره در تلاش است تا بهترین راهکارها را برای مشتریان خود فراهم آورد.

@@ -11,6 +11,13 @@ html {
   scroll-behavior: smooth;
 }
 
+  
+#nprogress .bar {
+  background: #20bb3a; 
+  height: 8px;        
+}
+
+
 @layer base {
   body {
     font-family: "Vazirmatn", sans-serif;
@@ -31,4 +38,5 @@ html {
   .gradient-hover-item:hover::after {
     @apply w-full rounded-full;
   }
+
 }
