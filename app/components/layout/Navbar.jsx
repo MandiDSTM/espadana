@@ -146,7 +146,7 @@ export default function Navbar({ scrollValue }) {
           <ul className="space-y-2 py-2">
             <li>
               <a
-                href="#home"
+                href="/"
                 className="block py-2 text-white font-medium"
                 onClick={() => setIsOpen(false)}
               >
