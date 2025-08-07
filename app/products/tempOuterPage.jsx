@@ -158,29 +158,39 @@ export default function ProductsPage() {
 
 
   useEffect(() => {
-    setLoading(true)
-    axios.get('https://blog.launch-team.ir/api/spadana-items?fields[0]=title&fields[1]=description&fields[2]=slug&fields[3]=price&fields[4]=isNew&fields[5]=available&fields[6]=publishedAt&fields[7]=rate&populate[cover][fields][0]=url&populate[spadana_category][fields][2]=name')
+    console.log("useEffect running...");
+
+    axios.get('https://blog.launch-team.ir/api/spadana-items?fields[0]=title&fields[1]=description&fields[2]=slug&fields[3]=price&fields[4]=isNew&fields[5]=available&fields[6]=publishedAt&fields[7]=rate&populate[cover][fields][0]=url')
       .then((response) => {
         const data = response.data.data;
         setProducts(data);
-        ProductListItemSkeleton()
         setFilteredProducts(data);
         return data;
       })
       .then((data) => {
-        // console.log("Fetched data:", data);
-        data.forEach(element => {
-          console.log(element.spadana_category.name)
-        });
+        console.log("Fetched data:", data);
       })
       .catch((err) => {
         console.log('Error occurred:', err);
-      })
-      .finally(() => {
-        setLoading(false); // پایان loading (چه موفق باشد چه نه)
       });
   }, []);
 
+    useEffect(() => {
+    if (products.length > 0) {
+      console.log("Updated products state:", products);
+      products.map(product => {
+        console.log(`blog.launch-team.ir${product.cover.url}`)
+      })
+    }
+  }, [products]);
+
+
+  useEffect(() => {
+    // شبیه‌سازی API call
+    // setProducts(sampleProducts);
+    // setFilteredProducts(sampleProducts);
+    setLoading(false);
+  }, []);
 
   useEffect(() => {
     filterProducts();
@@ -190,34 +200,23 @@ export default function ProductsPage() {
   const filterProducts = () => {
     let filtered = [...products];
 
-  // فیلتر بر اساس دسته‌بندی
-  if (selectedCategory !== 'همه') {
-    filtered = filtered.filter(product => {
-      // بررسی وجود spadana_category
-      if (!product.spadana_category) return false;
-      
-      // اگر selectedCategory یک object است
-      if (typeof selectedCategory === 'object' && selectedCategory.name) {
-        return product.spadana_category.name === selectedCategory.name;
-      }
-      
-      // اگر selectedCategory یک string است
-      return product.spadana_category.name === selectedCategory;
-    });
-  }
+    // فیلتر بر اساس دسته‌بندی
+    if (selectedCategory !== 'همه') {
+      filtered = filtered.filter(product => product.category === selectedCategory);
+    }
 
+    // فیلتر بر اساس قیمت
     filtered = filtered.filter(product =>
-    product.price >= priceRange[0] && product.price <= priceRange[1]
-  );
-
-
-    if (searchTerm) {
-    filtered = filtered.filter(product =>
-      product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      product.description.toLowerCase().includes(searchTerm.toLowerCase())
+      product.price >= priceRange[0] && product.price <= priceRange[1]
     );
-  }
 
+    // فیلتر بر اساس جستجو
+    if (searchTerm) {
+      filtered = filtered.filter(product =>
+        product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.description.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
 
     // مرتب‌سازی
     switch (sortBy) {

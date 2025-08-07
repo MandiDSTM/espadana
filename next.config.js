@@ -2,6 +2,10 @@
 const nextConfig = {
   output: 'standalone',
 
+  images: {
+    domains:['blog.launch-team.ir']
+  },
+
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {

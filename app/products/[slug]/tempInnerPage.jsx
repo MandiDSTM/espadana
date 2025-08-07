@@ -3,7 +3,6 @@ import { sampleProducts } from "@/data/products/products";
 import Navbar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/layout/Footer";
 import CatalogDownload from '../../components/CatalogeDownload';
-
 import {
   Star,
   Award,
