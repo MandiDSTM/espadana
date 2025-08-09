@@ -18,8 +18,11 @@ import {
 
 const formatPrice = (price) => {
   if (price === null || price === undefined) return null;
-  return price.toLocaleString("fa-IR");
+  const num = typeof price === 'string' ? Number(price) : price;
+  if (isNaN(num)) return null;
+  return num.toLocaleString("fa-IR");
 };
+
 
 
 const renderSection = (title, content, icon = null) => {
@@ -280,7 +283,7 @@ export default async function ProductsPage({ params }) {
 
                   {/* Price */}
                   <div className="space-y-2">
-                    {result.price ? (
+                    {result.price && result.price != 0 ? (
                       <div className="flex items-center gap-4">
                         <span className="text-3xl font-bold text-blue-600">
                           {formatPrice(result.price)} تومان
@@ -357,6 +360,7 @@ export default async function ProductsPage({ params }) {
             )}
 
             {/* Temperature Characteristics */}
+            
             {result.temperatureCharacteristics &&
               renderSection(
                 "مشخصات دمایی",
