@@ -46,12 +46,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center">
+                <Link href="#services" className="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center">
                   <span className="ml-2">›</span> خدمات ما
                 </Link>
               </li>
               <li>
-                <Link href="/projects" className="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center">
+                <Link href="#projects" className="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center">
                   <span className="ml-2">›</span> پروژه‌های موفق
                 </Link>
               </li>
@@ -66,7 +66,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center">
+                <Link href="#" className="text-gray-300 hover:text-blue-400 transition-colors duration-300 flex items-center">
                   <span className="ml-2">›</span> تماس با ما
                 </Link>
               </li>
@@ -136,8 +136,8 @@ export default function Footer() {
                   <FiMail size={18} />
                 </div>
                 <div>
-                  <a href="mailto:info@yourcompany.com" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
-                    info@yourcompany.com
+                  <a href="mailto:info@spadanasolar.ir" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                    info@spadanasolar.ir
                   </a>
                 </div>
               </div>

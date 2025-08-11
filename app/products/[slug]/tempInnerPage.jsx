@@ -501,3 +501,5 @@ export default async function ProductDetail({ params }) {
     </div>
   );
 }
+
+

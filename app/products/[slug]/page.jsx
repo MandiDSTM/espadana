@@ -225,9 +225,11 @@ export default async function ProductsPage({ params }) {
             {/* Product Image */}
             <div className="space-y-4">
               <div className="h-96 bg-gray-100 rounded-lg overflow-hidden">
-                <img
+                <Image
                   src={`https://blog.launch-team.ir${result.cover.url}`}
                   alt={result.title}
+                  width={200}
+                  height={200}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -238,7 +240,7 @@ export default async function ProductsPage({ params }) {
                     جدید
                   </span>
                 )}
-                {result.inStock ? (
+                {result.available ? (
                   <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                     <CheckCircle className="w-3 h-3 mr-1" />
                     موجود در انبار

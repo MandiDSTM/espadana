@@ -5,6 +5,7 @@ import Navbar from '../components/layout/Navbar';
 import { sampleProducts } from '@/data/products/products'
 import Link from 'next/link';
 import Image from 'next/image';
+import Footer from '../components/layout/Footer';
 import DropDown from '../components/ui/dropdown/DropDown'
 import LinkWithProgress from '../components/linkWithProgress/LinkWithProgress';
 import axios from 'axios'
@@ -150,7 +151,7 @@ export default function ProductsPage() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('همه');
-  const [priceRange, setPriceRange] = useState([0, 300000000]);
+  const [priceRange, setPriceRange] = useState([0, 800000000]);
   const [sortBy, setSortBy] = useState('جدیدترین');
   const [viewMode, setViewMode] = useState('grid');
   const [searchTerm, setSearchTerm] = useState('');
@@ -159,7 +160,7 @@ export default function ProductsPage() {
 
   useEffect(() => {
     setLoading(true)
-    axios.get('https://blog.launch-team.ir/api/spadana-items?fields[0]=title&fields[1]=description&fields[2]=slug&fields[3]=price&fields[4]=isNew&fields[5]=available&fields[6]=publishedAt&fields[7]=rate&populate[cover][fields][0]=url&populate[spadana_category][fields][2]=name')
+    axios.get('https://blog.launch-team.ir/api/spadana-items?fields[0]=title&fields[1]=description&fields[2]=slug&fields[3]=price&fields[4]=isNew&fields[5]=available&fields[6]=publishedAt&fields[7]=rate&populate[cover][fields][0]=url&populate[spadana_category][fields][2]=name&sort[0]=publishedAt:desc')
       .then((response) => {
         const data = response.data.data;
         setProducts(data);
@@ -331,12 +332,14 @@ export default function ProductsPage() {
   );
 
   const ProductListItem = ({ product }) => (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden flex">
-      <img
-        src={product.image}
-        alt={product.name}
-        className="w-32 h-32 object-cover"
-      />
+    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden flex items-center">
+      <Image
+          src={`https://blog.launch-team.ir${product.cover.url}`}
+          alt={product.title}
+          width={50}
+          height={50}
+          className="w-32 h-32 object-cover  mr-4 transition-transform duration-300"
+        />
       <div className="flex-1 p-4 flex flex-col justify-between">
         <div>
           <div className="flex items-start justify-between">
@@ -413,7 +416,7 @@ export default function ProductsPage() {
                   <input
                     type="text"
                     placeholder="جستجو در محصولات..."
-                    className="w-full pr-10 pl-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full pr-10 pl-4 py-2 outline-none border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent "
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
@@ -432,8 +435,8 @@ export default function ProductsPage() {
                   <input
                     type="range"
                     min="0"
-                    max="300000000"
-                    step="3000000"
+                    max="800000000"
+                    step="2000000"
                     value={priceRange[1]}
                     onChange={(e) => setPriceRange([0, parseInt(e.target.value)])}
                     className="w-full"
@@ -527,6 +530,7 @@ export default function ProductsPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
