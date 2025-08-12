@@ -1,8 +1,8 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import ProgressBar from "./components/progressBar/ProgressBar";
-import Script from "next/script";
 import AnalyticsTracker from "./components/analytics/AnaliticsTracker";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const vazirmatn = localFont({
   src: [
@@ -41,25 +41,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl" className={vazirmatn.variable}>
-        {/* لود اسکریپت اصلی گوگل آنالیتیکس */}
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-          strategy="afterInteractive"
-        />
-        {/* پیکربندی GA */}
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
-              page_path: window.location.pathname,
-            });
-          `}
-        </Script>
       <body>
-        <ProgressBar />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         <AnalyticsTracker />
+        <ProgressBar />
         {children}
       </body>
     </html>

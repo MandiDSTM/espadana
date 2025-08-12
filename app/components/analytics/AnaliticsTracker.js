@@ -1,18 +1,19 @@
-"use client";
+'use client'
 
-import { usePathname } from "next/navigation";
-import { useEffect } from "react";
-import * as gtag from "../lib/gtag"
-
+import { usePathname, useSearchParams } from 'next/navigation'
+import { useEffect } from 'react'
 
 export default function AnalyticsTracker() {
-  const pathname = usePathname();
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
 
   useEffect(() => {
-    if (pathname) {
-      gtag.pageview(pathname);
+    if (typeof window.gtag === 'function') {
+      window.gtag('config', process.env.NEXT_PUBLIC_GA_ID, {
+        page_path: pathname + (searchParams.toString() ? `?${searchParams}` : ''),
+      })
     }
-  }, [pathname]);
+  }, [pathname, searchParams])
 
-  return null;
+  return null
 }
