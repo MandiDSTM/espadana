@@ -41,7 +41,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl" className={vazirmatn.variable}>
-       <head>
         {/* لود اسکریپت اصلی گوگل آنالیتیکس */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
@@ -58,7 +57,6 @@ export default function RootLayout({ children }) {
             });
           `}
         </Script>
-      </head>
       <body>
         <ProgressBar />
         <AnalyticsTracker />
