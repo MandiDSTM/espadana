@@ -1,5 +1,4 @@
 version: '3'
-
 services:
   nextjs-app:
     build:
@@ -7,7 +6,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - "6000:6000"
-    environment:
-      - NODE_ENV=production
-      - PORT=6000
-    restart: unless-stopped
+    env_file:
+      - .env
+    restart: always

@@ -3,6 +3,7 @@ import "./globals.css";
 import ProgressBar from "./components/progressBar/ProgressBar";
 import AnalyticsTracker from "./components/analytics/AnaliticsTracker";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { Suspense } from 'react';
 
 const vazirmatn = localFont({
   src: [
@@ -82,7 +83,9 @@ export default function RootLayout({ children }) {
     <html lang="fa" dir="rtl" className={vazirmatn.variable}>
       <body>
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        <Suspense fallback={null}>
         <AnalyticsTracker />
+        </Suspense>
         <ProgressBar />
         {children}
       </body>
