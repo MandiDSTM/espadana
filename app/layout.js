@@ -3,30 +3,14 @@ import "./globals.css";
 import ProgressBar from "./components/progressBar/ProgressBar";
 import AnalyticsTracker from "./components/analytics/AnaliticsTracker";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { Suspense } from 'react';
+import { Suspense } from "react";
 
 const vazirmatn = localFont({
   src: [
-    {
-      path: "../public/fonts/Vazirmatn-Regular.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/Vazirmatn-Bold.woff2",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/Vazirmatn-Light.woff2",
-      weight: "100",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/Vazirmatn-SemiBold.woff2",
-      weight: "500",
-      style: "normal",
-    },
+    { path: "../public/fonts/Vazirmatn-Regular.woff2", weight: "400", style: "normal" },
+    { path: "../public/fonts/Vazirmatn-Bold.woff2", weight: "700", style: "normal" },
+    { path: "../public/fonts/Vazirmatn-Light.woff2", weight: "100", style: "normal" },
+    { path: "../public/fonts/Vazirmatn-SemiBold.woff2", weight: "500", style: "normal" },
   ],
   variable: "--font-vazirmatn",
 });
@@ -43,18 +27,18 @@ export const metadata = {
     "اینورتر خورشیدی",
     "باتری خورشیدی",
     "ساخت نیروگاه خورشیدی",
-    "انرژی تجدیدپذیر"
+    "انرژی تجدیدپذیر",
+    "فروش تجهیزات نیروگاه خورشیدی"
   ],
   authors: [{ name: "پیشرو فناوران اسپادانا" }],
   creator: "پیشرو فناوران اسپادانا",
   publisher: "پیشرو فناوران اسپادانا",
-  metadataBase: new URL("https://spadanasolar.ir"), 
+  metadataBase: new URL("https://spadanasolar.ir"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title:
-      "پیشرو فناوران اسپادانا | ساخت نیروگاه خورشیدی و فروش تجهیزات سولار",
+    title: "پیشرو فناوران اسپادانا | ساخت نیروگاه خورشیدی و فروش تجهیزات سولار",
     description:
       "طراحی، اجرا و فروش تجهیزات نیروگاه خورشیدی صنعتی و خانگی. تامین پنل خورشیدی، اینورتر، باتری و سیستم‌های ذخیره‌سازی انرژی.",
     url: "https://spadanasolar.ir",
@@ -71,20 +55,34 @@ export const metadata = {
     ],
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: "https://spadanasolar.ir/favicon.ico",
+    shortcut: "https://spadanasolar.ir/favicon.ico",
+    apple: "https://spadanasolar.ir/apple-touch-icon.png",
   },
 };
-
 
 export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl" className={vazirmatn.variable}>
+      <head>
+        {/* JSON-LD Logo Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "url": "https://spadanasolar.ir",
+              "logo": "https://spadanasolar.ir/images/spadana-color.svg",
+              "name": "پیشرو فناوران اسپادانا"
+            }),
+          }}
+        />
+      </head>
       <body>
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         <Suspense fallback={null}>
-        <AnalyticsTracker />
+          <AnalyticsTracker />
         </Suspense>
         <ProgressBar />
         {children}
