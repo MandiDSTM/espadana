@@ -75,14 +75,14 @@ export default function ContactForm() {
           <div className="lg:w-1/2 flex flex-col justify-center">
             <div className="relative h-full min-h-[400px] rounded-xl overflow-hidden shadow-xl">
               {/* اینجا می‌توانید تصویر مرتبط با کسب و کار یا خدمات خود را قرار دهید */}
-              <img 
+              {/* <img 
                 src="/images/solar-energy.jpg" 
                 alt="نیروگاه خورشیدی" 
                 className="w-full h-full object-cover"
                 // اگر تصویر ندارید، می‌توانید از این استایل استفاده کنید
                 style={{ display: 'none' }}
               />
-              
+               */}
               {/* تصویر موقت / نمونه - در صورت نداشتن تصویر */}
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-900 flex items-center justify-center p-8">
                 <div className="text-center text-white">

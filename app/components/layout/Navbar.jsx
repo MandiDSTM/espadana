@@ -31,12 +31,13 @@ export default function Navbar({ scrollValue }) {
     { name: "خدمات", href: "/#services" },
     { name: "محصولات", href: "/#products" },
     { name: "درباره ما", href: "/about" },
-    { name: "تماس با ما", href: "/#contact" },
+    { name: "تماس با ما", href: "/contact" },
   ];
 
   return (
     <nav
-      className={` fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/50 backdrop-blur-md" : " mx-auto"
+      className={` fixed top-0 left-0 right-0 z-50 transition-all duration-300 
+        ${scrolled ? "bg-white/50 backdrop-blur-md" : " mx-auto"
         }`}
     >
       <div className="container mx-auto px-4">
@@ -64,7 +65,7 @@ export default function Navbar({ scrollValue }) {
               className={`text-xl font-bold  ${!scrolled ? "text-gray-200" : "text-gray-700 font-semibold"
                 } hover:text-white`}
             >
-              اسپادانا
+              پیشرو فناوران اسپادانا
             </Link>
           </div>
 
@@ -175,8 +176,9 @@ export default function Navbar({ scrollValue }) {
 
             <li>
               <a
-                href="#contact"
-                className="block py-2 text-gray-200 hover:text-white hover:w-full hover:bg-gray-400 hover:pr-4 rounded-lg transition-all duration-300 ease-in-out"
+                href="/contact"
+                className="block py-2 text-gray-200 hover:text-white hover:w-full hover:bg-gray-400 
+                hover:pr-4 rounded-lg transition-all duration-300 ease-in-out"
                 onClick={() => setIsOpen(false)}
               >
                 تماس با ما

@@ -3,6 +3,7 @@ import Header from "./components/layout/Header";
 import Servises from "./components/layout/Services";
 import ContactForm from "./components/ui/ContactForm";
 import Footer from "./components/layout/Footer";
+import HeaderServer from "./components/layout/Header.server";
 
 
 export default function Home() {
@@ -10,7 +11,7 @@ export default function Home() {
   return (
     <div>
       <Navbar  />
-      <Header  />
+      <HeaderServer  />
       <Servises  />
       <div className="w-full  mx-auto py-24 bg-gray-100 pb-40">
         <div className="container mx-auto px-4">

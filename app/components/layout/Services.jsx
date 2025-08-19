@@ -21,7 +21,7 @@ const AccordionItem = ({ title, content, isOpen, toggleAccordion, index }) => {
   }, [content]);
 
   return (
-    <div className="border-b border-gray-200 last:border-b-0">
+    <div className="border-b border-gray-200 last:border-b-0 ">
       <button
         className={`w-full text-right py-5 px-6 flex justify-between items-center transition-all duration-300 group hover:bg-gray-50
                   ${isOpen ? "text-blue-600 md:text-2xl " : "text-gray-600-400 "} rounded-xl m-1`}
@@ -70,12 +70,12 @@ const FAQVisualElement = () => (
   <div className="lg:w-1/2 flex flex-col justify-center mb-8 lg:mb-0">
     <div className="relative h-full min-h-[400px] rounded-xl overflow-hidden shadow-xl">
       {/* تصویر بخش سوالات متداول */}
-      <img
+      {/* <img
         src="/images/customer-support.jpg"
         alt="پشتیبانی مشتریان"
         className="w-full h-full object-cover"
         style={{ display: "none" }}
-      />
+      /> */}
 
       {/* المان بصری سوالات متداول */}
       <div className="absolute bg-gradient-to-r from-blue-600 to-blue-900 inset-0 flex items-center justify-center p-8">
@@ -229,7 +229,7 @@ export default function Services() {
       description:
         "تیم متخصص ما با تکیه بر دانش فنی و تجربه، خدمات جامع طراحی مهندسی ارائه می‌دهد. از مشاوره اولیه تا تهیه نقشه‌های دقیق و محاسبات فنی، ما راه‌حل‌هایی سفارشی متناسب با نیازهای پروژه شما ارائه می‌کنیم.",
       delay: 100,
-      image: "/images/services/mohandesi.jpg",
+      image: "/images/services/mohandesi2.jpg",
       faqs: [
         {
           question: "چه خدمات مهندسی ارائه می‌دهید؟",
@@ -254,7 +254,7 @@ export default function Services() {
       description:
         "با شبکه گسترده تامین‌کنندگان معتبر، ما بهترین تجهیزات و مصالح را با کیفیت بالا و قیمت مناسب برای پروژه‌های شما فراهم می‌کنیم. سیستم لجستیک پیشرفته ما، تحویل به موقع و مدیریت موجودی کارآمد را تضمین می‌کند.",
       delay: 200,
-      image: "/images/services/tamin.jpg",
+      image: "/images/services/tamin2.jpg",
       faqs: [
         {
           question: "چه نوع تجهیزات خورشیدی ارائه می‌کنید؟",
