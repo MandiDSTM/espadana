@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { TypeAnimation } from "react-type-animation";
 
-export default function ClientHeaderBehavior({ typingItems = { subtitle: ["راه‌حل‌های بهینه انرژی پاک", 1000], description: ["ساخت آینده انرژی با تکنولوژی خورشیدی", 1000] } }) {
+export default function ClientHeaderBehavior() {
   const [isVisible, setIsVisible] = useState(false);
   const [useFallbackImage, setUseFallbackImage] = useState(false);
   const videoRef = useRef(null);

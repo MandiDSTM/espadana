@@ -8,7 +8,7 @@ export default function ContactForm() {
     phone: "",
     requestTypes: [],
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
@@ -41,7 +41,7 @@ export default function ContactForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
       // اینجا کد ارسال فرم به API
       await fetch('/api/contact', {
@@ -49,14 +49,14 @@ export default function ContactForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
-      
+
       setSubmitStatus({ type: 'success', message: 'پیام شما با موفقیت ارسال شد!' });
       setFormData({ name: "", phone: "", requestTypes: [] });
     } catch (error) {
       console.error("خطا در ارسال فرم:", error);
-      setSubmitStatus({ 
-        type: 'error', 
-        message: 'خطا در ارسال فرم. لطفا دوباره تلاش کنید.' 
+      setSubmitStatus({
+        type: 'error',
+        message: 'خطا در ارسال فرم. لطفا دوباره تلاش کنید.'
       });
     } finally {
       setIsSubmitting(false);
@@ -64,13 +64,23 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="py-16" id="contact">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-16 mb-16 " id="contact">
+      <div className="max-w-7xl mx-auto md:px-0">
         {/* Section Header */}
+        <div className="text-center">
+          <h3 className="text-3xl md:text-5xl font-bold text-center mb-4">
+            تماس با ما
+          </h3>
+          <div className="w-24 h-1 bg-blue-600 mx-auto mb-6 rounded"></div>
+          <p className="text-gray-600 max-w-2xl mx-auto mb-16">
+            ما آماده پاسخگویی به سوالات شما هستیم. با پر کردن فرم زیر،
+            کارشناسان ما در کمترین زمان بهترین پیشنهاد را به شما ارائه خواهند
+            داد.
+          </p>
+        </div>
 
-        
         {/* Contact Container */}
-        <div className="flex flex-col lg:flex-row gap-10 items-stretch">
+        <div className="flex flex-col lg:flex-row gap-10 items-stretch px-4 ">
           {/* Image / Illustration Section */}
           <div className="lg:w-1/2 flex flex-col justify-center">
             <div className="relative h-full min-h-[400px] rounded-xl overflow-hidden shadow-xl">
@@ -84,10 +94,12 @@ export default function ContactForm() {
               />
                */}
               {/* تصویر موقت / نمونه - در صورت نداشتن تصویر */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-900 flex items-center justify-center p-8">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-900 flex 
+              items-center justify-center p-8">
                 <div className="text-center text-white">
                   <div className="mb-6">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-24 h-24 mx-auto opacity-80">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                      className="w-24 h-24 mx-auto opacity-80">
                       <path d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM7.5 12a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM18.894 6.166a.75.75 0 0 0-1.06-1.06l-1.591 1.59a.75.75 0 1 0 1.06 1.061l1.591-1.59ZM21.75 12a.75.75 0 0 1-.75.75h-2.25a.75.75 0 0 1 0-1.5H21a.75.75 0 0 1 .75.75ZM17.834 18.894a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 1 0-1.061 1.06l1.59 1.591ZM12 18a.75.75 0 0 1 .75.75V21a.75.75 0 0 1-1.5 0v-2.25A.75.75 0 0 1 12 18ZM7.758 17.303a.75.75 0 0 0-1.061-1.06l-1.591 1.59a.75.75 0 0 0 1.06 1.061l1.591-1.59ZM6 12a.75.75 0 0 1-.75.75H3a.75.75 0 0 1 0-1.5h2.25A.75.75 0 0 1 6 12ZM6.697 7.757a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 0 0-1.061 1.06l1.59 1.591Z" />
                     </svg>
                   </div>
@@ -113,25 +125,24 @@ export default function ContactForm() {
               </div>
             </div>
           </div>
-          
+
           {/* Contact Form */}
           <div className="lg:w-1/2 bg-white p-8 rounded-xl shadow-xl">
             <h3 className="text-2xl font-bold text-gray-800 mb-6">فرم درخواست مشاوره</h3>
-            
+
             <p className="text-gray-600 mb-6">
               فرم زیر را پر کنید تا کارشناسان ما در کمترین زمان بهترین پیشنهاد را به شما ارائه دهند
             </p>
-            
+
             {submitStatus && (
-              <div className={`p-4 mb-6 rounded-md text-center ${
-                submitStatus.type === 'success' 
-                  ? 'bg-green-100 text-green-800' 
+              <div className={`p-4 mb-6 rounded-md text-center ${submitStatus.type === 'success'
+                  ? 'bg-green-100 text-green-800'
                   : 'bg-red-100 text-red-800'
-              }`}>
+                }`}>
                 {submitStatus.message}
               </div>
             )}
-            
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
@@ -144,12 +155,13 @@ export default function ContactForm() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2
+                     focus:ring-blue-500"
                     placeholder="نام و نام خانوادگی"
                     required
                   />
                 </div>
-                
+
                 <div>
                   <label htmlFor="phone" className="block text-gray-700 font-medium mb-2">
                     شماره تماس <span className="text-red-500">*</span>
@@ -168,7 +180,7 @@ export default function ContactForm() {
                   />
                 </div>
               </div>
-              
+
               <div>
                 <label className="block text-gray-700 font-medium mb-3">
                   نوع درخواست
@@ -206,7 +218,7 @@ export default function ContactForm() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="flex justify-center">
                 <button
                   type="submit"

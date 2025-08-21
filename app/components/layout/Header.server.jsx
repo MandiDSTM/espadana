@@ -1,11 +1,11 @@
 // components/layout/Header.server.jsx
 import React from "react";
-import Head from "next/head";
 import Image from "next/image";
-import TypeAnimationClient from '@/app/components/animations/TypeAnimationClient'
 import ClientHeaderBehavior from "./ClientHaderBehavior.client";
 
-export default function HeaderServer({ site = {} }) {
+
+
+export default function HeaderServer() {
 
   const typingItems = {
     subtitle: ["راه‌حل‌های بهینه انرژی پاک", 1000],
@@ -59,7 +59,11 @@ export default function HeaderServer({ site = {} }) {
                   duration-700 delay-700 opacity-100 translate-y-0`}
                 >
                   <div className="h-10 ">
-                    <TypeAnimationClient sequence={typingItems.description} />
+                    <div id="animated-text">
+                      <span id="animated-placeholder">
+                        ساخت آینده انرژی با تکنولوژی خورشیدی
+                      </span>
+                    </div>
                   </div>
 
                 </div>

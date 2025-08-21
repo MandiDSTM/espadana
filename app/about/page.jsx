@@ -1,10 +1,69 @@
+// app/about/page.jsx
 import Footer from "../components/layout/Footer";
 import Navbar from "../components/layout/Navbar";
 import Image from "next/image";
 
+export const revalidate = 60;
+
+// ✅ متادیتا کامل
+export const metadata = {
+  title: "درباره ما - پیشرو فناوران اسپادانا",
+  description:
+    "پیشرو فناوران اسپادانا، فعال در حوزه انرژی‌های تجدیدپذیر، طراحی و اجرای نیروگاه‌های خورشیدی و نوآوری در بلاکچین انرژی.",
+  alternates: {
+    canonical: "https://spadanasolar.ir/about",
+  },
+  openGraph: {
+    title: "درباره ما - پیشرو فناوران اسپادانا",
+    description:
+      "معرفی پیشرو فناوران اسپادانا؛ پیشگام در صنعت انرژی‌های تجدیدپذیر، رمزارز و بلاکچین انرژی.",
+    url: "https://spadanasolar.ir/about",
+    siteName: "پیشرو فناوران اسپادانا",
+    type: "website",
+    images: [
+      {
+        url: "https://spadanasolar.ir/images/og-about.jpg", // ✅ عکس مخصوص og
+        width: 1200,
+        height: 630,
+        alt: "درباره ما - پیشرو فناوران اسپادانا",
+      },
+    ],
+  },
+};
+
+// ✅ JSON-LD Schema
+function JsonLd() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "درباره ما - پیشرو فناوران اسپادانا",
+    "url": "https://spadanasolar.ir/about",
+    "description":
+      "پیشرو فناوران اسپادانا، شرکتی پیشگام در صنعت انرژی‌های تجدیدپذیر و نوآوری در فناوری‌های بلاکچین و رمزارز.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "پیشرو فناوران اسپادانا",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://spadanasolar.ir/images/spadana-color.svg", 
+      },
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
 export default function AboutPage() {
   return (
     <section className="flex flex-col min-h-screen">
+      {/* ✅ JSON-LD */}
+      <JsonLd />
+
       {/* هدر با ناوبار */}
       <header>
         <Navbar />
@@ -59,7 +118,7 @@ export default function AboutPage() {
                     alt="اسپادانا"
                   />
                 </div>
-                <div className="absolute z-20 mx-auto top-0  rounded-xl shadow-xl">
+                <div className="absolute z-20 mx-auto top-0 rounded-xl shadow-xl">
                   <Image
                     src="/images/about-inner-pic.jpg"
                     alt="espadana"
@@ -72,10 +131,10 @@ export default function AboutPage() {
             </div>
 
             {/* بخش متن */}
-            <div className="w-full md:w-1/2   text-gray-700 leading-relaxed flex items-center ">
+            <div className="w-full md:w-1/2 text-gray-700 leading-relaxed flex items-center">
               <div className="md:h-[450px] rounded-2xl shadow-xl p-5 px-12">
                 <h4 className="font-bold text-3xl text-center mb-8 mt-6">
-                  ما کی هستیم و چه می کنیم
+                  ما کی هستیم و چه می‌کنیم
                 </h4>
                 <p>
                   پیشرو فناوران اسپادانا، شرکتی پیشگام در صنعت انرژی‌های
