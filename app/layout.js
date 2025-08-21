@@ -57,7 +57,7 @@ export const metadata = {
   icons: {
     icon: "https://spadanasolar.ir/favicon.ico",
     shortcut: "https://spadanasolar.ir/favicon.ico",
-    apple: "https://spadanasolar.ir/apple-touch-icon.png",
+    apple: "https://spadanasolar.ir/favicon.ico",
   },
 };
 
@@ -73,8 +73,26 @@ export default function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "Organization",
               "url": "https://spadanasolar.ir",
-              "logo": "https://spadanasolar.ir/images/spadana-color.svg",
-              "name": "پیشرو فناوران اسپادانا"
+              "logo": "https://spadanasolar.ir/images/og.jpg",
+              "name": "پیشرو فناوران اسپادانا",
+               "description": "ارائه‌دهنده خدمات طراحی و ساخت نیروگاه‌های خورشیدی صنعتی و خانگی",
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "IR",
+                "addressRegion": "سمنان",
+                "streetAddress": "بلوار قائم، خیابان دانشجو، پارک علم و فناوری دانشگاه سمنان",
+                "postalCode": "3519618682"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "telephone": "023-33330790"
+              },
+              "sameAs": [
+
+                "https://www.instagram.com/spadana.solar/",
+                // "https://linkedin.com/company/yourcompany"
+              ]
             }),
           }}
         />

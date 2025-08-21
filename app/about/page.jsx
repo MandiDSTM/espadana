@@ -22,7 +22,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "https://spadanasolar.ir/images/og-about.jpg", // ✅ عکس مخصوص og
+        url: "https://spadanasolar.ir/images/og.jpg",
         width: 1200,
         height: 630,
         alt: "درباره ما - پیشرو فناوران اسپادانا",

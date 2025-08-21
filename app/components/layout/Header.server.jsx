@@ -44,7 +44,8 @@ export default function HeaderServer() {
                   راه‌حل‌های بهینه انرژی پاک
                 </div>
                 <h1
-                  className={`text-[18px] md:text-3xl lg:text-3xl  font-bold tracking-tight transition-all duration-700 
+                  className={`text-[18px] md:text-3xl lg:text-3xl  font-bold tracking-tight transition-all 
+                    duration-700 
                   delay-500 opacity-100 translate-y-0` }
                 >
                   طراحی بهینه، اجرای دقیق، بازدهی حداکثری
@@ -83,7 +84,7 @@ export default function HeaderServer() {
                       </svg>
                     </button>
                   </a>
-                  <button className="border-2 border-white/50 hover:border-white text-white px-2 
+                  <button className="border md:border-2 border-white/50 hover:border-white text-white px-2 
                 md:px-8  py-3  md:py-3.5 rounded-lg font-medium transition-all duration-300 transform 
                 hover:bg-white/10 flex items-center gap-1 md:gap-3 group">
                     <span className="text-[12px] md:text-base">ماشین حساب پنل خورشیدی</span>
